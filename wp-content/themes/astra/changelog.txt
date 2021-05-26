@@ -1,3 +1,9 @@
+v3.4.6
+- Fix: Footer alignment not working after update of v3.4.5.
+
+v3.4.5
+- Fix: Compatibility with Google Web Stories plugin v1.7.0.
+
 v3.4.4
 - Fix: Dropdown menu disappears while scrolling on mobile device.
 - Fix: Editor selection color not visible on default background color setting.
