@@ -1,4 +1,4 @@
-/*! elementor - v3.2.3 - 05-05-2021 */
+/*! elementor - v3.2.4 - 26-05-2021 */
 (self["webpackChunkelementor"] = self["webpackChunkelementor"] || []).push([["lightbox"],{
 
 /***/ "../node_modules/@babel/runtime-corejs2/core-js/object/define-properties.js":
@@ -53,7 +53,7 @@ $export($export.S + $export.F * !__webpack_require__(/*! ./_descriptors */ "../n
   \************************************************************/
 /*! unknown exports (runtime-defined) */
 /*! runtime requirements: module, __webpack_require__ */
-/*! CommonJS bailout: module.exports is used directly at 19:0-14 */
+/*! CommonJS bailout: module.exports is used directly at 21:0-14 */
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
@@ -72,6 +72,8 @@ var _asyncToGenerator2 = _interopRequireDefault(__webpack_require__(/*! @babel/r
 __webpack_require__(/*! core-js/modules/es6.array.find.js */ "../node_modules/core-js/modules/es6.array.find.js");
 
 __webpack_require__(/*! core-js/modules/es6.regexp.replace.js */ "../node_modules/core-js/modules/es6.regexp.replace.js");
+
+__webpack_require__(/*! core-js/modules/es6.string.starts-with.js */ "../node_modules/core-js/modules/es6.string.starts-with.js");
 
 var _screenfull = _interopRequireDefault(__webpack_require__(/*! ./screenfull */ "../assets/dev/js/frontend/utils/lightbox/screenfull.js"));
 
@@ -170,6 +172,10 @@ module.exports = elementorModules.ViewModule.extend({
     });
   },
   showModal: function showModal(options) {
+    if (options.url && !options.url.startsWith('http')) {
+      return;
+    }
+
     this.elements.$closeButton = this.getModal().getElements('closeButton');
     this.$buttons = this.elements.$closeButton;
     this.focusedButton = null;
@@ -1288,4 +1294,4 @@ __webpack_require__(/*! ./_fix-re-wks */ "../node_modules/core-js/modules/_fix-r
 /***/ })
 
 }]);
-//# sourceMappingURL=lightbox.d4a78ec3282d5785504d.bundle.js.map
+//# sourceMappingURL=lightbox.48b7d7dfa0c8ff9ab7ae.bundle.js.map
