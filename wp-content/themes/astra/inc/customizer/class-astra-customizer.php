@@ -122,6 +122,11 @@ if ( ! class_exists( 'Astra_Customizer' ) ) {
 				add_filter( 'customize_dynamic_partial_args', array( $this, 'filter_dynamic_partial_args' ), 10, 2 );
 
 			}
+			
+			// Disable block editor for widgets in the customizer.
+			if ( defined( 'GUTENBERG_VERSION' ) && version_compare( GUTENBERG_VERSION, '10.6.2', '>' ) && is_customize_preview() ) {
+				add_filter( 'gutenberg_use_widgets_block_editor', '__return_false' );
+			}
 
 			add_action( 'customize_controls_enqueue_scripts', array( $this, 'controls_scripts' ) );
 			add_filter( 'customize_controls_enqueue_scripts', array( $this, 'enqueue_customizer_scripts' ), 999 );
