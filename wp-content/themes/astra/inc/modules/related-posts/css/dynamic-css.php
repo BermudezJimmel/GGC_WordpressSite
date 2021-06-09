@@ -24,8 +24,19 @@ function astra_related_posts_css( $dynamic_css ) {
 
 	if ( astra_target_rules_for_related_posts() ) {
 
-		$link_color         = astra_get_option( 'link-color' );
-		$related_posts_grid = astra_get_option( 'related-posts-grid', 2 );
+		$link_color                    = astra_get_option( 'link-color' );
+		$related_posts_title_alignment = astra_get_option( 'releted-posts-title-alignment' );
+
+		// Added RTL language support for title alignment.
+		if ( is_rtl() && 'center' !== $related_posts_title_alignment ) {
+			$related_posts_title_alignment = ( 'left' === $related_posts_title_alignment ) ? 'right' : 'left';
+		}
+
+		// Related Posts Grid layout params.
+		$related_posts_grid = astra_get_option( 'related-posts-grid-responsive' );
+		$desktop_grid       = ( isset( $related_posts_grid['desktop'] ) ) ? $related_posts_grid['desktop'] : '2-equal';
+		$tablet_grid        = ( isset( $related_posts_grid['tablet'] ) ) ? $related_posts_grid['tablet'] : '2-equal';
+		$mobile_grid        = ( isset( $related_posts_grid['mobile'] ) ) ? $related_posts_grid['mobile'] : 'full';
 
 		// Related Posts -> Post Title typography dyanamic stylings.
 		$related_post_title_font_family    = astra_get_option( 'related-posts-title-font-family' );
@@ -72,8 +83,8 @@ function astra_related_posts_css( $dynamic_css ) {
 		$related_posts_meta_link_hover_color = astra_get_option( 'related-posts-meta-link-hover-color' );
 
 		$css_desktop_output = array(
-			'.ast-single-related-posts-container .ast-grid-' . $related_posts_grid => array(
-				'grid-template-columns' => 'repeat(' . $related_posts_grid . ', 1fr)',
+			'.ast-single-related-posts-container .ast-related-posts-wrapper' => array(
+				'grid-template-columns' => Astra_Builder_Helper::$grid_size_mapping[ $desktop_grid ],
 			),
 			'.ast-related-posts-inner-section .ast-date-meta .posted-on, .ast-related-posts-inner-section .ast-date-meta .posted-on *' => array(
 				'background' => esc_attr( $link_color ),
@@ -95,6 +106,7 @@ function astra_related_posts_css( $dynamic_css ) {
 				'font-size'      => astra_responsive_font( $related_posts_section_title_font_size, 'desktop' ),
 				'line-height'    => esc_attr( $related_posts_section_title_line_height ),
 				'text-transform' => esc_attr( $related_posts_section_title_text_transform ),
+				'text-align'     => esc_attr( $related_posts_title_alignment ),
 			),
 			/**
 			 * Related Posts - Post Title
@@ -149,8 +161,8 @@ function astra_related_posts_css( $dynamic_css ) {
 			'.ast-single-related-posts-container .ast-related-posts-wrapper .ast-related-post' => array(
 				'width' => '100%',
 			),
-			'.ast-single-related-posts-container .ast-grid-' . $related_posts_grid => array(
-				'grid-template-columns' => 'repeat(2, 1fr)',
+			'.ast-single-related-posts-container .ast-related-posts-wrapper' => array(
+				'grid-template-columns' => Astra_Builder_Helper::$grid_size_mapping[ $tablet_grid ],
 			),
 			'.ast-related-post-content .ast-related-post-title' => array(
 				'font-size' => astra_responsive_font( $related_post_title_font_size, 'tablet' ),
@@ -169,8 +181,8 @@ function astra_related_posts_css( $dynamic_css ) {
 		$dynamic_css .= astra_parse_css( $css_max_tablet_output, '', astra_get_tablet_breakpoint() );
 
 		$css_max_mobile_output = array(
-			'.ast-single-related-posts-container .ast-grid-' . $related_posts_grid => array(
-				'grid-template-columns' => '1fr',
+			'.ast-single-related-posts-container .ast-related-posts-wrapper' => array(
+				'grid-template-columns' => Astra_Builder_Helper::$grid_size_mapping[ $mobile_grid ],
 			),
 			'.ast-related-post-content .ast-related-post-title' => array(
 				'font-size' => astra_responsive_font( $related_post_title_font_size, 'mobile' ),

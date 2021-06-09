@@ -323,21 +323,11 @@ if ( ! class_exists( 'Astra_Customizer' ) ) {
 
 			self::$contexts['blogname'] = array(
 				Astra_Builder_Helper::$general_tab_config,
-				array(
-					'setting'  => ASTRA_THEME_SETTINGS . '[display-site-title]',
-					'operator' => '==',
-					'value'    => true,
-				),
 
 			);
 
 			self::$contexts['blogdescription'] = array(
 				Astra_Builder_Helper::$general_tab_config,
-				array(
-					'setting'  => ASTRA_THEME_SETTINGS . '[display-site-tagline]',
-					'operator' => '==',
-					'value'    => true,
-				),
 
 			);
 
@@ -1048,7 +1038,6 @@ if ( ! class_exists( 'Astra_Customizer' ) ) {
 			require ASTRA_THEME_DIR . 'inc/customizer/configurations/layout/class-astra-site-identity-configs.php';
 			require ASTRA_THEME_DIR . 'inc/customizer/configurations/layout/class-astra-blog-layout-configs.php';
 			require ASTRA_THEME_DIR . 'inc/customizer/configurations/layout/class-astra-blog-single-layout-configs.php';
-			require ASTRA_THEME_DIR . 'inc/customizer/configurations/layout/class-astra-related-posts-configs.php';
 			require ASTRA_THEME_DIR . 'inc/customizer/configurations/layout/class-astra-sidebar-layout-configs.php';
 			require ASTRA_THEME_DIR . 'inc/customizer/configurations/layout/class-astra-site-container-layout-configs.php';
 			require ASTRA_THEME_DIR . 'inc/customizer/configurations/colors-background/class-astra-body-colors-configs.php';
