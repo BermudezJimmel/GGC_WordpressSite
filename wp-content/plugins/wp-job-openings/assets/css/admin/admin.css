@@ -316,6 +316,33 @@ ul.awsm-list-inline label {
 	display: block;
 }
 
+.awsm-settings-image-field-container .awsm-settings-image {
+	margin-bottom: 1.2em;
+	padding: 5px;
+}
+
+.awsm-settings-image-field-container .awsm-settings-image.awsm-settings-no-image {
+	border: 1px dashed #b4b9be;
+	text-align: center;
+	width: 100%;
+	height: 180px;
+}
+
+.awsm-settings-image-field-container .awsm-settings-no-image span {
+    color: #777;
+    line-height: 180px;
+    vertical-align: middle;
+}
+
+.awsm-settings-image-field-container .awsm-settings-image img {
+	max-width: 100%;
+	max-height: 100%;
+}
+
+.awsm-settings-image-field-container .awsm-settings-image-upload-button {
+	margin-right: 10px;
+}
+
 .awsm-text-red,
 .awsm-text-danger {
 	color: #a92222 !important;
@@ -995,6 +1022,33 @@ a.awsm-text-red:hover {
 	padding: 2px;
 }
 
+.awsm-jobs-invalid {
+    padding: 3px 0px;
+}
+
+.awsm-jobs-invalid::before {
+	content: "!";
+	display: inline-block;
+	margin-right: 4px;
+	width: 14px;
+	height: 14px;
+	line-height: 14px;
+	text-align: center;
+	color: #fff;
+	background: #D36230;
+	border-radius: 50%;
+	position: absolute;
+    left: 0;
+    top: 6px;
+}
+
+p.description.awsm-jobs-invalid {
+    position: relative;
+    margin-bottom: 0px;
+    padding-bottom: 0px;
+	padding-left: 18px;
+}
+
 /*
 * Empty States
 */
@@ -1068,7 +1122,7 @@ a.awsm-text-red:hover {
 
 .awsm-job-admin-nav-logo h1 {
 	margin: 0;
-	background: url('../img/logo-b.png') no-repeat;
+	background: url('../img/logo-b.svg') no-repeat;
 	width: 168px;
 	height: 21px;
 	background-size: 168px 21px;

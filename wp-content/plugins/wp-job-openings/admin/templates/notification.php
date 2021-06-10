@@ -17,6 +17,8 @@ if ( ! defined( 'ABSPATH' ) ) {
 	$admin_from_email                = get_option( 'awsm_jobs_admin_from_email_notification', $admin_email );
 	$applicant_mail_template         = get_option( 'awsm_jobs_notification_mail_template' );
 	$admin_mail_template             = get_option( 'awsm_jobs_notification_admin_mail_template' );
+
+	$from_email_error_msg = __( "The provided 'From' email address does not belong to this site domain and may lead to issues in email delivery.", 'wp-job-openings' );
 ?>
 
 <div id="settings-awsm-settings-notification" class="awsm-admin-settings">
@@ -51,11 +53,18 @@ if ( ! defined( 'ABSPATH' ) ) {
 									<div class="awsm-col awsm-form-group awsm-col-half">
 										<label for="awsm_jobs_from_email_notification"><?php esc_html_e( 'From', 'wp-job-openings' ); ?></label>
 											<input type="email" class="awsm-form-control" name="awsm_jobs_from_email_notification" id="awsm_jobs_from_email_notification" value="<?php echo esc_attr( $from_email ); ?>" required />
+											<?php
+											if ( $this->validate_from_email_id( $from_email ) === false ) {
+												printf( '<p class="description awsm-jobs-invalid">%s</p>', esc_html( $from_email_error_msg ) );
+											}
+											?>
 									</div><!-- .col -->
 									<div class="awsm-col awsm-form-group awsm-col-half">
 										<label for="awsm_jobs_reply_to_notification"><?php esc_html_e( 'Reply-To', 'wp-job-openings' ); ?></label>
 											<input type="text" class="awsm-form-control" name="awsm_jobs_reply_to_notification" id="awsm_jobs_reply_to_notification" value="<?php echo esc_attr( $reply_to ); ?>" />
 									</div><!-- .col -->
+								</div>
+								<div class="awsm-row">
 									<div class="awsm-col awsm-form-group awsm-col-half">
 										<label for="awsm_jobs_applicant_notification"><?php esc_html_e( 'To', 'wp-job-openings' ); ?></label>
 											<input type="text" class="awsm-form-control" name="awsm_jobs_applicant_notification" id="awsm_jobs_applicant_notification" value="<?php echo esc_attr( '{applicant-email}' ); ?>" disabled />
@@ -95,11 +104,18 @@ if ( ! defined( 'ABSPATH' ) ) {
 									<div class="awsm-col awsm-form-group awsm-col-half">
 										<label for="awsm_jobs_admin_from_email_notification"><?php esc_html_e( 'From', 'wp-job-openings' ); ?></label>
 											<input type="email" class="awsm-form-control" name="awsm_jobs_admin_from_email_notification" id="awsm_jobs_admin_from_email_notification" value="<?php echo esc_attr( $admin_from_email ); ?>" required />
+											<?php
+											if ( $this->validate_from_email_id( $admin_from_email ) === false ) {
+												printf( '<p class="description awsm-jobs-invalid">%s</p>', esc_html( $from_email_error_msg ) );
+											}
+											?>
 									</div><!-- .col -->
 									<div class="awsm-col awsm-form-group awsm-col-half">
 										<label for="awsm_jobs_admin_reply_to_notification"><?php esc_html_e( 'Reply-To', 'wp-job-openings' ); ?></label>
 											<input type="text" class="awsm-form-control" name="awsm_jobs_admin_reply_to_notification" id="awsm_jobs_admin_reply_to_notification" value="<?php echo esc_attr( $admin_reply_to ); ?>" />
 									</div><!-- .col -->
+								</div>
+								<div class="awsm-row">
 									<div class="awsm-col awsm-form-group awsm-col-half">
 										<label for="awsm_jobs_admin_to_notification"><?php esc_html_e( 'To', 'wp-job-openings' ); ?></label>
 											<input type="text" class="awsm-form-control" name="awsm_jobs_admin_to_notification" id="awsm_jobs_admin_to_notification" value="<?php echo esc_attr( $admin_to_mail ); ?>" placeholder="<?php esc_html__( 'Admin Email', 'wp-job-openings' ); ?>" required />
@@ -129,6 +145,75 @@ if ( ! defined( 'ABSPATH' ) ) {
 					</div><!-- .awsm-form-section -->
 				</div><!-- .awsm-form-section-main -->
 			</div><!-- #awsm-job-notification-options-container -->
+
+			<div class="awsm-sub-options-container" id="awsm-customize-notification-options-container" style="display: none;">
+				<?php
+					$customizer_settings = AWSM_Job_Openings_Mail_Customizer::get_settings();
+					/**
+					 * Filters the notification customizer fields.
+					 *
+					 * @since 2.2.0
+					 *
+					 * @param array $customizer_fields Notification customizer fields.
+					 */
+					$customizer_fields = apply_filters(
+						'awsm_jobs_notification_customizer_fields',
+						array(
+							array(
+								'id'    => 'awsm-notification-customize-html-template-title',
+								'label' => __( 'Customize HTML Template', 'wp-job-openings' ),
+								'type'  => 'title',
+							),
+							array(
+								'id'    => 'awsm_jobs_notification_customizer_logo',
+								'name'  => 'awsm_jobs_notification_customizer[logo]',
+								'type'  => 'image',
+								'label' => __( 'Logo', 'wp-job-openings' ),
+								'value' => $customizer_settings['logo'],
+							),
+							array(
+								'id'          => 'awsm_jobs_notification_customizer_base_color',
+								'name'        => 'awsm_jobs_notification_customizer[base_color]',
+								'label'       => __( 'Base Color', 'wp-job-openings' ),
+								'type'        => 'colorpicker',
+								'value'       => $customizer_settings['base_color'],
+								'other_attrs' => array(
+									'data-default-color' => '#05BC9C',
+								),
+							),
+							array(
+								'id'          => 'awsm_jobs_notification_customizer_footer_text',
+								'name'        => 'awsm_jobs_notification_customizer[footer_text]',
+								'type'        => 'textarea',
+								'label'       => __( 'Footer Text', 'wp-job-openings' ),
+								'value'       => $customizer_settings['footer_text'],
+								'other_attrs' => array(
+									'rows' => 4,
+									'cols' => 50,
+								),
+							),
+						)
+					);
+
+					AWSM_Job_Openings_Mail_Customizer::validate_template();
+					?>
+
+				<table class="form-table">
+					<tbody>
+						<?php
+							do_action( 'before_awsm_notification_customizer_settings' );
+
+							$this->display_settings_fields( $customizer_fields );
+
+							do_action( 'after_awsm_notification_customizer_settings' );
+						?>
+					</tbody>
+				</table>
+
+				<div class="awsm-form-footer">
+					<?php echo apply_filters( 'awsm_job_settings_submit_btn', get_submit_button(), 'notification' ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
+				</div><!-- .awsm-form-footer -->
+			</div><!-- .awsm-customize-notification-options-container -->
 
 			<?php do_action( 'after_awsm_settings_main_content', 'notification' ); ?>
 
