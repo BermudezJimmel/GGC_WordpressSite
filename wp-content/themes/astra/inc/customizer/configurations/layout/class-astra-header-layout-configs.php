@@ -312,9 +312,9 @@ if ( ! class_exists( 'Astra_Header_Layout_Configs' ) ) {
 					),
 					'divider'  => array( 'ast_class' => 'ast-bottom-divider' ),
 					'priority' => 30,
-					'title'    => __( 'Container Animation', 'astra' ),
+					'title'    => __( 'Submenu Animation', 'astra' ),
 					'choices'  => array(
-						''           => __( 'Default', 'astra' ),
+						''           => __( 'None', 'astra' ),
 						'slide-down' => __( 'Slide Down', 'astra' ),
 						'slide-up'   => __( 'Slide Up', 'astra' ),
 						'fade'       => __( 'Fade', 'astra' ),

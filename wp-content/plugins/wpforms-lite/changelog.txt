@@ -1,5 +1,14 @@
 == Changelog ==
 
+= 1.6.7.3 =
+- Changed: Renamed a misspelled `wpforms_display_sumbit_spinner_src` filter to `wpforms_display_submit_spinner_src`, old name is now deprecated.
+- Fixed: Expired transients are not deleted automatically.
+- Fixed: Entries count race condition under high load in the plugin Lite version.
+- Fixed: Form Builder product education links.
+
+= 1.6.7.2 =
+- Fixed: Admin notice option flag reference.
+
 = 1.6.7.1 =
 - Changed: Improved logic of pasting a text in the fields with word and character limits.
 - Changed: Updated DOMPurify lib to 2.2.9.

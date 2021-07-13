@@ -647,7 +647,7 @@ final class Astra_Builder_Helper {
 			'astra_header_desktop_items',
 			array(
 				'logo'    => array(
-					'name'    => __( 'Logo', 'astra' ),
+					'name'    => __( 'Site Identity & Logo', 'astra' ),
 					'icon'    => 'admin-appearance',
 					'section' => 'title_tagline',
 					'delete'  => false,
@@ -710,7 +710,7 @@ final class Astra_Builder_Helper {
 			'astra_header_mobile_items',
 			array(
 				'logo'           => array(
-					'name'    => __( 'Logo', 'astra' ),
+					'name'    => __( 'Site Identity & Logo', 'astra' ),
 					'icon'    => 'admin-appearance',
 					'section' => 'title_tagline',
 				),

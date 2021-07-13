@@ -96,6 +96,13 @@ if ( ! class_exists( 'Astra_Theme_Options' ) ) {
 				return self::$defaults;
 			}
 
+			/**
+			 * Update Astra customizer default values. To not update directly on existing users site, added backwards.
+			 *
+			 * @since 3.6.3
+			 */
+			$apply_new_default_values = astra_button_default_padding_updated();
+
 			// Defaults list of options.
 			self::$defaults = apply_filters(
 				'astra_theme_defaults',
@@ -170,22 +177,22 @@ if ( ! class_exists( 'Astra_Theme_Options' ) ) {
 					'button-bg-h-color'                    => '',
 					'theme-button-padding'                 => array(
 						'desktop'      => array(
-							'top'    => 10,
-							'right'  => 40,
-							'bottom' => 10,
-							'left'   => 40,
+							'top'    => $apply_new_default_values ? 15 : 10,
+							'right'  => $apply_new_default_values ? 30 : 40,
+							'bottom' => $apply_new_default_values ? 15 : 10,
+							'left'   => $apply_new_default_values ? 30 : 40,
 						),
 						'tablet'       => array(
-							'top'    => '',
-							'right'  => '',
-							'bottom' => '',
-							'left'   => '',
+							'top'    => $apply_new_default_values ? 14 : '',
+							'right'  => $apply_new_default_values ? 28 : '',
+							'bottom' => $apply_new_default_values ? 14 : '',
+							'left'   => $apply_new_default_values ? 28 : '',
 						),
 						'mobile'       => array(
-							'top'    => '',
-							'right'  => '',
-							'bottom' => '',
-							'left'   => '',
+							'top'    => $apply_new_default_values ? 12 : '',
+							'right'  => $apply_new_default_values ? 24 : '',
+							'bottom' => $apply_new_default_values ? 12 : '',
+							'left'   => $apply_new_default_values ? 24 : '',
 						),
 						'desktop-unit' => 'px',
 						'tablet-unit'  => 'px',
@@ -476,6 +483,10 @@ if ( ! class_exists( 'Astra_Theme_Options' ) ) {
 
 					// toogle menu target.
 					'mobile-header-toggle-target'          => 'icon',
+
+					// Performance.
+					'load-google-fonts-locally'            => false,
+					'preload-local-fonts'                  => false,
 				)
 			);
 

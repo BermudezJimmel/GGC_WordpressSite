@@ -15,7 +15,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 /**
  * Define Constants
  */
-define( 'ASTRA_THEME_VERSION', '3.5.0' );
+define( 'ASTRA_THEME_VERSION', '3.6.3' );
 define( 'ASTRA_THEME_SETTINGS', 'astra-settings' );
 define( 'ASTRA_THEME_DIR', trailingslashit( get_template_directory() ) );
 define( 'ASTRA_THEME_URI', trailingslashit( esc_url( get_template_directory_uri() ) ) );
@@ -52,6 +52,7 @@ if ( is_admin() ) {
 	require_once ASTRA_THEME_DIR . 'inc/customizer/class-astra-fonts-data.php';
 }
 
+require_once ASTRA_THEME_DIR . 'inc/lib/webfont/class-astra-webfont-loader.php';
 require_once ASTRA_THEME_DIR . 'inc/customizer/class-astra-fonts.php';
 
 require_once ASTRA_THEME_DIR . 'inc/dynamic-css/custom-menu-old-header.php';

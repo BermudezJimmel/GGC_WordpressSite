@@ -996,15 +996,43 @@ class WPForms_Frontend {
 				);
 
 				if ( ! empty( $settings['ajax_submit'] ) && ! wpforms_is_amp() ) {
+
+					/**
+					 * Filter submit spinner image src attribute.
+					 *
+					 * @since      1.5.4.1
+					 * @deprecated 1.6.7.3
+					 *
+					 * @param string $src       Spinner image source.
+					 * @param array  $form_data Form data and settings.
+					 */
+					$src = apply_filters_deprecated(
+						'wpforms_display_sumbit_spinner_src',
+						[
+							WPFORMS_PLUGIN_URL . 'assets/images/submit-spin.svg',
+							$form_data,
+						],
+						'1.6.7.3',
+						'wpforms_display_submit_spinner_src'
+					);
+
+					/**
+					 * Filter submit spinner image src attribute.
+					 *
+					 * @since 1.6.7.3
+					 *
+					 * @param string $src       Spinner image source.
+					 * @param array  $form_data Form data and settings.
+					 */
+					$src = apply_filters(
+						'wpforms_display_submit_spinner_src',
+						$src,
+						$form_data
+					);
+
 					printf(
 						'<img src="%s" class="wpforms-submit-spinner" style="display: none;" width="26" height="26" alt="">',
-						esc_url(
-							apply_filters(
-								'wpforms_display_sumbit_spinner_src',
-								WPFORMS_PLUGIN_URL . 'assets/images/submit-spin.svg',
-								$form_data
-							)
-						)
+						esc_url( $src )
 					);
 				}
 

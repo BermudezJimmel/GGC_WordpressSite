@@ -1535,6 +1535,18 @@ if ( ! class_exists( 'Astra_Woocommerce' ) ) :
 				$css_output .= astra_parse_css( $woo_global_button_css );
 			}
 
+			if ( ! is_shop() && ! is_product() ) {
+
+				$css_output .= astra_parse_css( 
+					array(
+						'.widget_product_search button' => array(
+							'flex'    => '0 0 auto',
+							'padding' => '10px 20px;',
+						),
+					) 
+				);
+			}
+
 			if ( $is_site_rtl ) {
 				$woo_product_lang_direction_css = array(
 					'.woocommerce.woocommerce-checkout form #customer_details.col2-set, .woocommerce-page.woocommerce-checkout form #customer_details.col2-set' => array(

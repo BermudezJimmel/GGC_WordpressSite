@@ -3,7 +3,7 @@ Contributors: wpforms, jaredatch, smub, slaFFik
 Tags: contact form, contact form plugin, forms, form builder, custom form, contact button, contact me, custom contact form, form manager, form, forms builder, forms creator, captcha, recaptcha, Akismet, email form, web form, feedback form, payment form, survey form, donation form, email submit form, message form, mailchimp, mailchimp form, aweber, aweber form, paypal, paypal form, stripe, stripe form, getresponse, getresponse form, email subscription, contact form widget, user registration form, wordpress registration, wordpress login form, feedback
 Requires at least: 4.9
 Tested up to: 5.7
-Stable tag: 1.6.7.1
+Stable tag: 1.6.7.3
 Requires PHP: 5.5
 License: GNU General Public License v2.0 or later
 
@@ -417,6 +417,15 @@ Thank you
 Syed Balkhi
 
 == Changelog ==
+
+= 1.6.7.3 =
+- Changed: Renamed a misspelled `wpforms_display_sumbit_spinner_src` filter to `wpforms_display_submit_spinner_src`, old name is now deprecated.
+- Fixed: Expired transients are not deleted automatically.
+- Fixed: Entries count race condition under high load in the plugin Lite version.
+- Fixed: Form Builder product education links.
+
+= 1.6.7.2 =
+- Fixed: Admin notice option flag reference.
 
 = 1.6.7.1 =
 - Changed: Improved logic of pasting a text in the fields with word and character limits.

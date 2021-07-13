@@ -585,3 +585,77 @@ function astra_target_rules_for_related_posts() {
 function is_astra_addon_3_5_0_version() {
 	return defined( 'ASTRA_EXT_VER' ) && version_compare( ASTRA_EXT_VER, '3.5.0', '<' );
 }
+
+/**
+ * Get a stylesheet URL for a webfont.
+ *
+ * @since 3.6.0
+ *
+ * @param string $url    The URL of the remote webfont.
+ * @param string $format The font-format. If you need to support IE, change this to "woff".
+ *
+ * @return string Returns the CSS.
+ */
+function ast_get_webfont_url( $url, $format = 'woff2' ) {
+
+	// Check if already Google font URL present or not. Basically avoiding 'Astra_WebFont_Loader' class rendering.
+	$astra_font_url = astra_get_option( 'astra_font_url', false );
+	if ( $astra_font_url ) {
+		return json_decode( $astra_font_url );
+	}
+
+	// Now create font URL if its not present.
+	$font = astra_webfont_loader_instance( $url );
+	$font->set_font_format( $format );
+	return $font->get_url();
+}
+
+/**
+ * Get the file preloads.
+ *
+ * @param string $url    The URL of the remote webfont.
+ * @param string $format The font-format. If you need to support IE, change this to "woff".
+ */
+function ast_load_preload_local_fonts( $url, $format = 'woff2' ) {
+
+	// Check if cached font files data preset present or not. Basically avoiding 'Astra_WebFont_Loader' class rendering.
+	$astra_local_font_files = get_site_option( 'astra_local_font_files', false );
+
+	if ( is_array( $astra_local_font_files ) && ! empty( $astra_local_font_files ) ) {
+		$font_format = apply_filters( 'astra_local_google_fonts_format', $format );
+		foreach ( $astra_local_font_files as $key => $local_font ) {
+			if ( $local_font ) {
+				echo '<link rel="preload" href="' . esc_url( $local_font ) . '" as="font" type="font/' . esc_attr( $font_format ) . '" crossorigin>'; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+			}
+		}
+		return;
+	}
+
+	// Now preload font data after processing it, as we didn't get stored data.
+	$font = astra_webfont_loader_instance( $url );
+	$font->set_font_format( $format );
+	$font->preload_local_fonts();
+}
+
+/**
+ * Set flag to manage backward compatibility for v3.5.0 earlier users for the transparent header border bottom default value changed.
+ *
+ * @since 3.6.0
+ */
+function astra_get_transparent_header_default_value() {
+	$astra_settings                                      = get_option( ASTRA_THEME_SETTINGS );
+	$astra_settings['transparent-header-default-border'] = isset( $astra_settings['transparent-header-default-border'] ) ? false : true;
+	return apply_filters( 'astra_transparent_header_default_border', $astra_settings['transparent-header-default-border'] );
+}
+
+/**
+ * Check whether user is exising or new to apply the updated default values for button padding & support GB button paddings with global button padding options.
+ *
+ * @since 3.6.3
+ * @return string
+ */
+function astra_button_default_padding_updated() {
+	$astra_settings                                = get_option( ASTRA_THEME_SETTINGS );
+	$astra_settings['btn-default-padding-updated'] = isset( $astra_settings['btn-default-padding-updated'] ) ? $astra_settings['btn-default-padding-updated'] : true;
+	return apply_filters( 'astra_update_button_padding_defaults', $astra_settings['btn-default-padding-updated'] );
+}

@@ -106,7 +106,8 @@ function astra_ext_transparent_header_dynamic_css( $dynamic_css, $dynamic_css_fi
 	// Desktop Transparent Heder Logo Width.
 	$css_output = array(
 		'.ast-theme-transparent-header #masthead .site-logo-img .transparent-custom-logo .astra-logo-svg' => array(
-			'width' => astra_get_css_value( $transparent_header_logo_width['desktop'], 'px' ),
+			'width'  => astra_get_css_value( $transparent_header_logo_width['desktop'], 'px' ),
+			'height' => astra_get_css_value( ( ! empty( $transparent_header_logo_width['desktop-svg-height'] ) && ! is_customize_preview() ) ? $transparent_header_logo_width['desktop-svg-height'] : '', 'px' ), 
 		),
 		'.ast-theme-transparent-header #masthead .site-logo-img .transparent-custom-logo img' => array(
 			' max-width' => astra_get_css_value( $transparent_header_logo_width['desktop'], 'px' ),
@@ -117,7 +118,8 @@ function astra_ext_transparent_header_dynamic_css( $dynamic_css, $dynamic_css_fi
 	// Tablet Transparent Heder Logo Width.
 	$tablet_css_output = array(
 		'.ast-theme-transparent-header #masthead .site-logo-img .transparent-custom-logo .astra-logo-svg' => array(
-			'width' => astra_get_css_value( $transparent_header_logo_width['tablet'], 'px' ),
+			'width'  => astra_get_css_value( $transparent_header_logo_width['tablet'], 'px' ),
+			'height' => astra_get_css_value( ( ! empty( $transparent_header_logo_width['tablet-svg-height'] ) && ! is_customize_preview() ) ? $transparent_header_logo_width['tablet-svg-height'] : '', 'px' ), 
 		),
 		'.ast-theme-transparent-header #masthead .site-logo-img .transparent-custom-logo img' => array(
 			' max-width' => astra_get_css_value( $transparent_header_logo_width['tablet'], 'px' ),
@@ -128,7 +130,8 @@ function astra_ext_transparent_header_dynamic_css( $dynamic_css, $dynamic_css_fi
 	// Mobile Transparent Heder Logo Width.
 	$mobile_css_output = array(
 		'.ast-theme-transparent-header #masthead .site-logo-img .transparent-custom-logo .astra-logo-svg' => array(
-			'width' => astra_get_css_value( $transparent_header_logo_width['mobile'], 'px' ),
+			'width'  => astra_get_css_value( $transparent_header_logo_width['mobile'], 'px' ),
+			'height' => astra_get_css_value( ( ! empty( $transparent_header_logo_width['mobile-svg-height'] ) && ! is_customize_preview() ) ? $transparent_header_logo_width['mobile-svg-height'] : '', 'px' ), 
 		),
 		'.ast-theme-transparent-header #masthead .site-logo-img .transparent-custom-logo img' => array(
 			' max-width' => astra_get_css_value( $transparent_header_logo_width['mobile'], 'px' ),

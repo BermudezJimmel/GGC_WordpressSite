@@ -225,6 +225,10 @@ input[type="search"] {
   border: 0;
 }
 
+.search .site-main .ast-search-submit {
+  display: none;
+}
+
 input[type="search"]::-webkit-search-cancel-button,
 input[type="search"]::-webkit-search-decoration {
   -webkit-appearance: none;
@@ -2031,6 +2035,7 @@ body .entry-content .wp-block-latest-posts li {
   display: inline-flex;
   vertical-align: middle;
   align-items: center;
+  transition: all 0.2s linear;
 }
 
 .ast-grid-section-center {
@@ -2148,14 +2153,6 @@ body .entry-content .wp-block-latest-posts li {
  * AST HF Builder - Responsive CSS.
  * For desktop view.
  */
-#ast-mobile-header {
-  display: none;
-}
-
-.ast-header-break-point #ast-desktop-header {
-  display: none;
-}
-
 .ast-header-break-point #ast-mobile-header {
   display: block;
 }

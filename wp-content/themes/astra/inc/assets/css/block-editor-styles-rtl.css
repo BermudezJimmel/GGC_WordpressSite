@@ -448,8 +448,6 @@ html {
 .edit-post-visual-editor p,
 .block-editor-block-list__block p,
 .editor-default-block-appender textarea.editor-default-block-appender__content {
-  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen-Sans, Ubuntu, Cantarell, Helvetica Neue, sans-serif;
-  font-weight: inherit;
   font-size: 15px;
   font-size: 1rem;
 }
@@ -459,10 +457,6 @@ html {
   font-size: 2rem;
   font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen-Sans, Ubuntu, Cantarell, Helvetica Neue, sans-serif;
   font-weight: normal;
-}
-
-.edit-post-visual-editor .block-editor-block-list__block {
-  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen-Sans, Ubuntu, Cantarell, Helvetica Neue, sans-serif;
 }
 
 @media (min-width: 600px) {

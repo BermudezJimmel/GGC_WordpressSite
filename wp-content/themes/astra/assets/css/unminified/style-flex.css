@@ -281,6 +281,10 @@ input[type="search"] {
   border: 0;
 }
 
+.search .site-main .ast-search-submit {
+  display: none;
+}
+
 input[type="search"]::-webkit-search-cancel-button,
 input[type="search"]::-webkit-search-decoration {
   -webkit-appearance: none;
@@ -1658,7 +1662,7 @@ body {
  * 1 - Header Layout 1
  * 2 - Header Layout 2
  * 3 - Header Layout 3
- * 4 - Header Inline Logo & Site Title 
+ * 4 - Header Inline Logo & Site Title
  * 5 - Next Button Menu Item
  * 6 - Responsive Style
 */
@@ -1881,13 +1885,14 @@ body {
 }
 
 /**
- * 4 - Header Inline Logo & Site Title 
+ * 4 - Header Inline Logo & Site Title
 */
 .ast-logo-title-inline .ast-site-identity {
   -js-display: inline-flex;
   display: inline-flex;
   vertical-align: middle;
   align-items: center;
+  transition: all 0.2s linear;
 }
 
 .ast-logo-title-inline .site-logo-img {
@@ -1900,10 +1905,6 @@ body {
 
 /* Mobile Header Alignment */
 @media (max-width: 544px) {
-  .site-branding img,
-  .site-header .site-logo-img .custom-logo-link img {
-    max-width: 100%;
-  }
   .ast-header-custom-item-outside .ast-mobile-header-stack .site-branding {
     padding-right: 0;
   }

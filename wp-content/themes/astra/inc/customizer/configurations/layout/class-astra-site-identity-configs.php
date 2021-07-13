@@ -228,7 +228,7 @@ if ( ! class_exists( 'Astra_Site_Identity_Configs' ) ) {
 					),
 					'divider'           => array( 'ast_class' => 'ast-bottom-divider ast-top-divider' ),
 				),
-
+				
 				/**
 				 * Option: Display Title
 				 */

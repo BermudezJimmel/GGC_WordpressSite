@@ -613,7 +613,8 @@ var astraTriggerEvent = function astraTriggerEvent( el, typeArg ) {
 	AstraToggleSetup = function () {
 
 		if ( 'off-canvas' === mobileHeaderType || 'full-width' === mobileHeaderType ) {
-			var __main_header_all = document.querySelectorAll( '#ast-mobile-popup' );
+			// comma separated selector added, if menu is outside of Off-Canvas then submenu is not clickable, it work only for Off-Canvas area with dropdown style.
+			var __main_header_all = document.querySelectorAll( '#ast-mobile-popup, #ast-mobile-header' );
 			if ( body.classList.contains('ast-header-break-point') ) {
 
 				var menu_toggle_all   = document.querySelectorAll( '#ast-mobile-header .main-header-menu-toggle' );
@@ -646,17 +647,21 @@ var astraTriggerEvent = function astraTriggerEvent( el, typeArg ) {
 
 				if ('undefined' !== typeof __main_header_all[i]) {
 
-					if (document.querySelector('header.site-header').classList.contains('ast-builder-menu-toggle-link')) {
-						var astra_menu_toggle = __main_header_all[i].querySelectorAll('ul.main-header-menu .menu-item-has-children > .menu-link, ul.main-header-menu .ast-menu-toggle');
-					} else {
-						var astra_menu_toggle = __main_header_all[i].querySelectorAll('ul.main-header-menu .ast-menu-toggle');
-					}
-					// Add Eventlisteners for Submenu.
-					if (astra_menu_toggle.length > 0) {
+					// To handle the comma seprated selector added above we need this loop.
+					for( var mainHeaderCount =0; mainHeaderCount  < __main_header_all.length; mainHeaderCount++ ){
 
-						for (var j = 0; j < astra_menu_toggle.length; j++) {
+						if (document.querySelector('header.site-header').classList.contains('ast-builder-menu-toggle-link')) {
+							var astra_menu_toggle = __main_header_all[mainHeaderCount].querySelectorAll('ul.main-header-menu .menu-item-has-children > .menu-link, ul.main-header-menu .ast-menu-toggle');
+						} else {
+							var astra_menu_toggle = __main_header_all[mainHeaderCount].querySelectorAll('ul.main-header-menu .ast-menu-toggle');
+						}
+						// Add Eventlisteners for Submenu.
+						if (astra_menu_toggle.length > 0) {
 
-							astra_menu_toggle[j].addEventListener('click', AstraToggleSubMenu, false);
+							for (var j = 0; j < astra_menu_toggle.length; j++) {
+
+								astra_menu_toggle[j].addEventListener('click', AstraToggleSubMenu, false);
+							}
 						}
 					}
 				}

@@ -984,6 +984,8 @@ class WPForms_Lite {
 	 */
 	public function update_entry_count( $fields, $entry, $form_id ) {
 
+		global $wpdb;
+
 		if ( ! apply_filters( 'wpforms_dash_widget_allow_entries_count_lite', true ) ) {
 			return;
 		}
@@ -994,8 +996,19 @@ class WPForms_Lite {
 			return;
 		}
 
-		$count = absint( get_post_meta( $form_id, 'wpforms_entries_count', true ) );
-		update_post_meta( $form_id, 'wpforms_entries_count', $count + 1 );
+		if ( add_post_meta( $form_id, 'wpforms_entries_count', 1, true ) ) {
+			return;
+		}
+
+		// phpcs:ignore WordPress.DB.DirectDatabaseQuery.NoCaching
+		$wpdb->query(
+			$wpdb->prepare(
+				"UPDATE {$wpdb->postmeta} 
+					SET meta_value = meta_value + 1 
+					WHERE post_id = %d AND meta_key = 'wpforms_entries_count'",
+				$form_id
+			)
+		);
 	}
 
 	/**

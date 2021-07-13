@@ -928,6 +928,12 @@ return array(
 		),
 	),
 	array(
+		'Bona Nova' => array(
+			'variants' => array( 'regular', 'italic', '700' ), 
+			'category' => 'serif', 
+		),
+	),
+	array(
 		'Bonbon' => array(
 			'variants' => array( 'regular' ), 
 			'category' => 'handwriting', 
@@ -1858,6 +1864,12 @@ return array(
 		),
 	),
 	array(
+		'Encode Sans SC' => array(
+			'variants' => array( '100', '200', '300', 'regular', '500', '600', '700', '800', '900' ), 
+			'category' => 'sans-serif', 
+		),
+	),
+	array(
 		'Encode Sans Semi Condensed' => array(
 			'variants' => array( '100', '200', '300', 'regular', '500', '600', '700', '800', '900' ), 
 			'category' => 'sans-serif', 
@@ -2020,6 +2032,12 @@ return array(
 		),
 	),
 	array(
+		'Festive' => array(
+			'variants' => array( 'regular' ), 
+			'category' => 'handwriting', 
+		),
+	),
+	array(
 		'Finger Paint' => array(
 			'variants' => array( 'regular' ), 
 			'category' => 'display', 
@@ -2161,6 +2179,12 @@ return array(
 		'Fugaz One' => array(
 			'variants' => array( 'regular' ), 
 			'category' => 'display', 
+		),
+	),
+	array(
+		'Fuggles' => array(
+			'variants' => array( 'regular' ), 
+			'category' => 'handwriting', 
 		),
 	),
 	array(
@@ -3102,7 +3126,7 @@ return array(
 	array(
 		'Kufam' => array(
 			'variants' => array( 'regular', '500', '600', '700', '800', '900', 'italic', '500italic', '600italic', '700italic', '800italic', '900italic' ), 
-			'category' => 'display', 
+			'category' => 'sans-serif', 
 		),
 	),
 	array(
@@ -4360,6 +4384,12 @@ return array(
 		),
 	),
 	array(
+		'Otomanopee One' => array(
+			'variants' => array( 'regular' ), 
+			'category' => 'sans-serif', 
+		),
+	),
+	array(
 		'Over the Rainbow' => array(
 			'variants' => array( 'regular' ), 
 			'category' => 'handwriting', 
@@ -4780,6 +4810,12 @@ return array(
 		),
 	),
 	array(
+		'Qahiri' => array(
+			'variants' => array( 'regular' ), 
+			'category' => 'sans-serif', 
+		),
+	),
+	array(
 		'Quando' => array(
 			'variants' => array( 'regular' ), 
 			'category' => 'serif', 
@@ -4955,7 +4991,7 @@ return array(
 	),
 	array(
 		'Reem Kufi' => array(
-			'variants' => array( 'regular' ), 
+			'variants' => array( 'regular', '500', '600', '700' ), 
 			'category' => 'sans-serif', 
 		),
 	),
@@ -5161,6 +5197,12 @@ return array(
 		'Rye' => array(
 			'variants' => array( 'regular' ), 
 			'category' => 'display', 
+		),
+	),
+	array(
+		'STIX Two Math' => array(
+			'variants' => array( 'regular' ), 
+			'category' => 'serif', 
 		),
 	),
 	array(
@@ -5938,6 +5980,12 @@ return array(
 		),
 	),
 	array(
+		'Tourney' => array(
+			'variants' => array( '100', '200', '300', 'regular', '500', '600', '700', '800', '900', '100italic', '200italic', '300italic', 'italic', '500italic', '600italic', '700italic', '800italic', '900italic' ), 
+			'category' => 'display', 
+		),
+	),
+	array(
 		'Trade Winds' => array(
 			'variants' => array( 'regular' ), 
 			'category' => 'display', 
@@ -6013,6 +6061,12 @@ return array(
 		'Ubuntu Mono' => array(
 			'variants' => array( 'regular', 'italic', '700', '700italic' ), 
 			'category' => 'monospace', 
+		),
+	),
+	array(
+		'Uchen' => array(
+			'variants' => array( 'regular' ), 
+			'category' => 'serif', 
 		),
 	),
 	array(
@@ -6268,6 +6322,12 @@ return array(
 		),
 	),
 	array(
+		'Yomogi' => array(
+			'variants' => array( 'regular' ), 
+			'category' => 'handwriting', 
+		),
+	),
+	array(
 		'Yrsa' => array(
 			'variants' => array( '300', 'regular', '500', '600', '700' ), 
 			'category' => 'serif', 
@@ -6299,6 +6359,18 @@ return array(
 	),
 	array(
 		'Zen Dots' => array(
+			'variants' => array( 'regular' ), 
+			'category' => 'display', 
+		),
+	),
+	array(
+		'Zen Loop' => array(
+			'variants' => array( 'regular', 'italic' ), 
+			'category' => 'display', 
+		),
+	),
+	array(
+		'Zen Tokyo Zoo' => array(
 			'variants' => array( 'regular' ), 
 			'category' => 'display', 
 		),
