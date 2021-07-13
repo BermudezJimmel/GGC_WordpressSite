@@ -299,7 +299,14 @@ i.exad-extention-logo::after {
 .exad-woo-products:before {
   content: "\e949";
 }
-
+.context-menu-icon.exad-logo:after {
+  position: relative;
+  top: 1px;
+  color: #FFF;
+  opacity: 1;
+  font-size: 13px;
+  left: 0;
+}
 
 /* Exclusive Addons Font CSS ends */
 

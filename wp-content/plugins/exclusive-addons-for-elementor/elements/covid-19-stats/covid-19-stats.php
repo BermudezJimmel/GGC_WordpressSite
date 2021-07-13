@@ -63,7 +63,7 @@ class Covid_19_Stats extends Widget_Base {
     }
 
     public function get_keywords() {
-        return [ 'exclusive', 'statistics', 'corona', 'coronavirus' ];
+        return [ 'exclusive', 'covid19', 'statistics', 'corona', 'coronavirus' ];
     }
 
     /**
@@ -73,7 +73,7 @@ class Covid_19_Stats extends Widget_Base {
 	 *
 	 * @access protected
 	 */
-    protected function _register_controls() {
+    protected function register_controls() {
         $exad_primary_color = get_option( 'exad_primary_color_option', '#7a56ff' );
  
         $this->start_controls_section(

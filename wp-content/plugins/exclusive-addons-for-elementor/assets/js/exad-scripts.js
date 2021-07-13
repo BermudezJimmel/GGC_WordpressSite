@@ -133,36 +133,6 @@ var exclusiveButton = function ( $scope, $ ) {
 
 // exclusive Button script ends
 
-
-// Container Link JS started
-
-$('body').on('click.onWrapperLink', '[data-exad-element-link]', function() {
-    var $wrapper = $(this),
-        data     = $wrapper.data('exad-element-link'),
-        id       = $wrapper.data('id'),
-        anchor   = document.createElement('a'),
-        anchorReal,
-        timeout;
-
-    anchor.id            = 'exad-container-link-' + id;
-    anchor.href          = data.url;
-    anchor.target        = data.is_external ? '_blank' : '_self';
-    anchor.rel           = data.nofollow ? 'nofollow noreferer' : '';
-    anchor.style.display = 'none';
-
-    document.body.appendChild(anchor);
-
-    anchorReal = document.getElementById(anchor.id);
-    anchorReal.click();
-
-    timeout = setTimeout(function() {
-        document.body.removeChild(anchorReal);
-        clearTimeout(timeout);
-    });
-});
-
-// Container Link JS end
-
 // Corona script starts
 var exclusiveCorona = function ($scope, $) {
 	var exadCoronaWrapper = $scope.find('.exad-corona').eq(0);
@@ -408,7 +378,7 @@ var exclusiveImageMagnifier = function($scope, $) {
 
     var $magnify = $scope.find( '.exad-image-magnify' ).eq(0),
     $large       = $magnify.find( '.exad-magnify-large' ),
-    $small       = $magnify.find( '.exad-magnify-small' );
+    $small       = $magnify.find( '.exad-magnify-small > img' );
     
 
     var native_width  = 0;
@@ -453,6 +423,36 @@ var exclusiveImageMagnifier = function($scope, $) {
 }
 
 // image magnifier script ends
+
+
+// Container Link JS started
+
+$('body').on('click.onWrapperLink', '[data-exad-element-link]', function() {
+    var $wrapper = $(this),
+        data     = $wrapper.data('exad-element-link'),
+        id       = $wrapper.data('id'),
+        anchor   = document.createElement('a'),
+        anchorReal,
+        timeout;
+
+    anchor.id            = 'exad-link-anything-' + id;
+    anchor.href          = data.url;
+    anchor.target        = data.is_external ? '_blank' : '_self';
+    anchor.rel           = data.nofollow ? 'nofollow noreferer' : '';
+    anchor.style.display = 'none';
+
+    document.body.appendChild(anchor);
+
+    anchorReal = document.getElementById(anchor.id);
+    anchorReal.click();
+
+    timeout = setTimeout(function() {
+        document.body.removeChild(anchorReal);
+        clearTimeout(timeout);
+    });
+});
+
+// Container Link JS end
 
 // logo carousel script starts
 
@@ -656,6 +656,7 @@ var exclusivePostGrid = function( $scope, $ ) {
                 posts_per_page: $(this).data('posts_per_page'),
             	post_offset: $(this).data('post-offset'),
                 post_thumbnail: $(this).data('post-thumbnail'),
+                post_thumb_size: $(this).data('post-thumb-size'),
                 equal_height: $(this).data('equal_height'),
                 enable_details_btn: $(this).data('enable_details_btn'),
                 details_btn_text: $(this).data('details_btn_text'),

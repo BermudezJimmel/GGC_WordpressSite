@@ -5,7 +5,6 @@ if ( ! defined( 'ABSPATH' ) ) exit;
 
 use \Elementor\Controls_Manager;
 use \Elementor\Group_Control_Box_Shadow;
-use \Elementor\Scheme_Typography;
 use \Elementor\Group_Control_Typography;
 use \Elementor\Group_Control_Border;
 use \Elementor\Widget_Base;
@@ -37,7 +36,7 @@ class Facebook_Feed extends Widget_Base {
 	/**
 	 * Register controls
 	 */
-	protected function _register_controls() {
+	protected function register_controls() {
 		$exad_primary_color   = get_option( 'exad_primary_color_option', '#7a56ff' );
 		$this->start_controls_section(
 			'exad_facebook_feed_wrapper',
@@ -858,7 +857,6 @@ class Facebook_Feed extends Widget_Base {
 				'name' => 'date_typography',
 				'label' => __( 'Typography', 'exclusive-addons-elementor' ),
 				'selector' => '{{WRAPPER}} .exad-facebook-date',
-				'scheme' => Scheme_Typography::TYPOGRAPHY_3,
 				'condition' => [
 					'show_date' => 'yes'
 				],
@@ -1009,7 +1007,6 @@ class Facebook_Feed extends Widget_Base {
 				'name' => 'read_more_typography',
 				'label' => __( 'Typography', 'exclusive-addons-elementor' ),
 				'selector' => '{{WRAPPER}} .exad-facebook-content p a',
-				'scheme' => Scheme_Typography::TYPOGRAPHY_3,
 				'condition' => [
 					'read_more' => 'yes'
 				],
@@ -1583,8 +1580,6 @@ class Facebook_Feed extends Widget_Base {
 		if ( empty( $settings['post_limit'] ) ) {
 			$items = $facebook_feed_data['data'];
 		}
-
-		// var_dump($items[1]);
 
 		?>
 

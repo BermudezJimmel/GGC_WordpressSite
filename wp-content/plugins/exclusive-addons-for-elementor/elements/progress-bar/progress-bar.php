@@ -45,7 +45,7 @@ class Progress_Bar extends Widget_Base {
 		return $hashColor;
 	}
 
-	protected function _register_controls() {
+	protected function register_controls() {
 		$exad_primary_color = get_option( 'exad_primary_color_option', '#7a56ff' );
 
 		$this->start_controls_section(
@@ -61,7 +61,10 @@ class Progress_Bar extends Widget_Base {
 				'label'     => __('Title', 'exclusive-addons-elementor'),
 				'type'      => Controls_Manager::TEXT,
 				'default'   => __('Progress Bar', 'exclusive-addons-elementor'),
-				'separator' => 'before'
+				'separator' => 'before',
+				'dynamic' => [
+					'active' => true,
+				]
 			]
 		);
 
@@ -370,7 +373,7 @@ class Progress_Bar extends Widget_Base {
 		);
 
 		$this->add_render_attribute( 'exad_progress_bar_title', 'class', 'exad-progress-bar-title' );
-        $this->add_inline_editing_attributes( 'exad_progress_bar_title', 'none' );
+        $this->add_inline_editing_attributes( 'exad_progress_bar_title', 'basic' );
 
 		if ( 'line' === $settings['exad_progress_bar_preset'] || 'line-bubble' === $settings['exad_progress_bar_preset'] ) {
 			$this->add_render_attribute(
@@ -401,9 +404,12 @@ class Progress_Bar extends Widget_Base {
 				]
 			);
 		}
+
+		?>
 		
-		echo '<div '.$this->get_render_attribute_string('exad-progress-bar').' data-progress-bar>';
-			echo $title ? '<h6 '.$this->get_render_attribute_string( 'exad_progress_bar_title' ).'>'.Helper::exad_wp_kses( $title ).'</h6>' : '';
-		echo '</div>';
+		<div <?php echo $this->get_render_attribute_string('exad-progress-bar'); ?> data-progress-bar>
+			<?php echo $title ? '<h6 '.$this->get_render_attribute_string( 'exad_progress_bar_title' ).'>'.Helper::exad_wp_kses( $title ).'</h6>' : ''; ?>
+		</div>
+		<?php
 	}
 }

@@ -3,7 +3,7 @@ Contributors: devscred, mmaumio, atiquehasan, zabid, fahimahmmed100
 Tags: elementor, elementor addons, elementor addon, elementor widgets, widgets, widget, essential widget, page builder, builder, visual editor, wordpress page builder, exclusive, modern, trendy
 Requires at least: 4.6
 Tested up to: 5.7.2
-Stable tag: 2.4.21
+Stable tag: 2.4.41
 License: GPLv3
 License URI: https://opensource.org/licenses/GPL-3.0
 
@@ -81,6 +81,9 @@ FREE EXTENSIONS:
 3000+ Free Icons to choose from 3 Open Source Icon Libraries we integrated. (Feather Icons, Remix Icons, Teeny Icons)
 **[Sneak a Peek](https://exclusiveaddons.com/free-icons/)**
 
+### Unlimited Section Nesting
+Add as many child sections as you need with the help of Unlimited Section Nesting feature of Exclusive Addons.
+
 ### Light Weight & Fast Loading
 Our Elementor Addons itself is very lightweight. We have added only a handful of third party scripts with the plugin. We optimized all the images and codes for a fast loading experience.
 
@@ -94,7 +97,7 @@ We have enabled Inline Editing with Live Preview for most of our elements. That 
 This option allows you change the default Color scheme for all the widgets at once on a single click from the Admin Dashboard.
 
 
-### 48+ PREMIUM WIDGETS and EXTENSIONS ON OUR [PRO VERSION](https://exclusiveaddons.com/pricing)
+### 49+ PREMIUM WIDGETS and EXTENSIONS ON OUR [PRO VERSION](https://exclusiveaddons.com/pricing)
 
 1. **[Demo Previewer](https://exclusiveaddons.com/demo-previewer/)** - A unique widget from the best elementor addons. Demo Previewer Widget offers the opportunity to showcase a demo or short preview of any product and provide an idea about the pricing on your WordPress site.
 2. **[Breadcrumb](https://exclusiveaddons.com/exclusive-addons/breadcrumb/)** - Breadcrumb Widget is a fully responsive navigator, that can trace the visitor’s footsteps on a certain path on a website. Every step of that path is clickable, from the homepage to the current location.
@@ -140,7 +143,7 @@ This option allows you change the default Color scheme for all the widgets at on
 42. **[Woo Cart](https://exclusiveaddons.com/shop/)** - Style Woocommerce Cart page from Exclusive Addons as you like with tons of customization options.
 43. **[Woo Checkout](https://exclusiveaddons.com/shop/)** - Style Your Woocommerce Checkout page without a Theme. With the help of all the customization options you might need.
 44. **[Site Logo](https://exclusiveaddons.com/site-logo/)** - Display your Site Logo with some versatile customization options.
-
+45. **[Template](https://exclusiveaddons.com/template-demo)** - Create reusable content as Elementor template and put anywhere using the Template widget.
 
 LIST OF OUR PRO EXTENSIONS:
 1. **[Gradient animation](https://exclusiveaddons.com/gradient-animation/)** 
@@ -221,8 +224,22 @@ No, It won't break your existing elements. We put most of our efforts ensuring t
 
 == Changelog ==
 
-= 2.4.21 - 31/05/2021 =
-- Fix: Bug in List Group widget.
+= 2.4.41 - 10/07/2021 =
+- Fix: Issue with Text Editor not working properly on Editor panel.
+
+= 2.4.40 - 04/07/2021 =
+- New: Added Unlimited Section Nesting feature.
+
+= 2.4.31 - 24/06/2021 =
+- Fix: Bugs on Card widget.
+- Fix: Bugs on Accordion widget.
+
+= 2.4.30 - 19/06/2021 =
+- Fix: Changed _register_controls to register_controls and _content_template to content_template on all the widgets due to Elementor deprecation.
+- Fix: Added Inline Editing Attributes to all the Widgets.
+- Fix: Improved PHP coding architecture.
+- Fix: Changed Images to have height and width attribute from WordPress core for better optimization on Core Web Vitals.
+- Fix: Overall bug fixes on several areas of the Plugin.
 
 = 2.4.2 - 31/05/2021 =
 - New: Added List Group Widget.

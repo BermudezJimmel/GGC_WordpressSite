@@ -31,7 +31,7 @@ class Heading extends Widget_Base {
         return [ 'exclusive', 'title' ];
     }
     
-	protected function _register_controls() {
+	protected function register_controls() {
 		$exad_secondary_color = get_option( 'exad_secondary_color_option', '#00d8d8' );
 		
 		/**
@@ -51,7 +51,10 @@ class Heading extends Widget_Base {
 				'type'        => Controls_Manager::TEXT,
 				'label_block' => true,
 				'separator'   => 'before',
-				'default'     => esc_html__( 'Heading Title', 'exclusive-addons-elementor' )
+				'default'     => esc_html__( 'Heading Title', 'exclusive-addons-elementor' ),
+				'dynamic' => [
+					'active' => true,
+				]
 			]
 		);
 
@@ -71,7 +74,10 @@ class Heading extends Widget_Base {
 			[
 				'label'   => esc_html__( 'Sub Heading', 'exclusive-addons-elementor' ),
 				'type'    => Controls_Manager::TEXTAREA,
-				'default' => esc_html__( 'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Labore odio sint harum quasi maiores nobis dignissimos illo doloremque blanditiis illum! Lorem ipsum dolor sit, amet consectetur adipisicing elit. Labore odio sint harum quasi maiores nobis digniss.', 'exclusive-addons-elementor' )
+				'default' => esc_html__( 'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Labore odio sint harum quasi maiores nobis dignissimos illo doloremque blanditiis illum! Lorem ipsum dolor sit, amet consectetur adipisicing elit. Labore odio sint harum quasi maiores nobis digniss.', 'exclusive-addons-elementor' ),
+				'dynamic' => [
+					'active' => true,
+				]
 			]
 		);
 
@@ -742,44 +748,49 @@ class Heading extends Widget_Base {
 	        }
         }
 
-		$this->add_inline_editing_attributes( 'exad_heading_title', 'none' );
+		$this->add_inline_editing_attributes( 'exad_heading_title', 'basic' );
 
 		$this->add_render_attribute( 'exad_heading_subheading', 'class', 'exad-exclusive-heading-description' );
-		$this->add_inline_editing_attributes( 'exad_heading_subheading' );
+		$this->add_inline_editing_attributes( 'exad_heading_subheading', 'basic' );
+		?>
 
-        echo '<div class="exad-exclusive-heading">';
-            echo '<div '.$this->get_render_attribute_string( 'exad_exclusive_heading_wrapper' ).'>';
-
-				if ( 'yes' === $settings['exad_heading_icon_show'] && !empty( $settings['exad_heading_icon']['value'] ) ) :
-          			echo '<span class="exad-heading-icon">';
-          				Icons_Manager::render_icon( $settings['exad_heading_icon'] );
-          			echo '</span>';
+        <div class="exad-exclusive-heading">
+            <div <?php echo $this->get_render_attribute_string( 'exad_exclusive_heading_wrapper' ); ?>>
+			<?php 
+				if ( 'yes' === $settings['exad_heading_icon_show'] && !empty( $settings['exad_heading_icon']['value'] ) ) : ?>
+          			<span class="exad-heading-icon">
+          				<?php Icons_Manager::render_icon( $settings['exad_heading_icon'] ); ?>
+          			</span>
+				<?php 	  
 				endif;
 
-            	if( !empty( $settings['exad_heading_title_link']['url'] ) ) :
-            		echo '<a '.$this->get_render_attribute_string( 'exad_heading_title_link' ).'>';
-                endif;
+            	if( !empty( $settings['exad_heading_title_link']['url'] ) ) : ?>
+            		<a <?php echo $this->get_render_attribute_string( 'exad_heading_title_link' ); ?>>
+				<?php endif; ?>
 
-                echo '<h1 '.$this->get_render_attribute_string( 'exad_heading_title' ).'>';
-                    echo wp_kses_post( $settings['exad_heading_title'] );
-				echo '</h1>';
+                <h1 <?php echo $this->get_render_attribute_string( 'exad_heading_title' ); ?>>
+					<?php echo wp_kses_post( $settings['exad_heading_title'] ); ?>
+				</h1>
+	
+                <?php if( !empty( $settings['exad_heading_title_link']['url'] ) ) { ?>
+                    </a>
+				<?php 
+				}
 
-                if( !empty( $settings['exad_heading_title_link']['url'] ) ) {
-                    echo '</a>';
-                }
-
-				if ( 'yes' === $settings['exad_heading_divider'] ) :
-					echo '<div class="exad-heading-separator"></div>';
+				if ( 'yes' === $settings['exad_heading_divider'] ) : ?>
+					<div class="exad-heading-separator"></div>
+				<?php 	
 				endif;
                 
-                if ( !empty( $settings['exad_heading_subheading'] ) ) :
-                    echo '<p '.$this->get_render_attribute_string( 'exad_heading_subheading' ).'>';
-                    	echo wp_kses_post( $settings['exad_heading_subheading'] );
-                    echo '</p>';
-                endif;
+                if ( !empty( $settings['exad_heading_subheading'] ) ) : ?>
+                    <p <?php echo $this->get_render_attribute_string( 'exad_heading_subheading' ); ?>>
+						<?php echo wp_kses_post( $settings['exad_heading_subheading'] ); ?>
+                    </p>
+				<?php endif; ?>
 
-            echo '</div>';
-        echo '</div>';
+            </div>
+        </div>
+	<?php 	
 	}
 
 	/**
@@ -790,7 +801,7 @@ class Heading extends Widget_Base {
      * @since 1.0.0
      * @access protected
      */
-	protected function _content_template() {
+	protected function content_template() {
 		?>
 		<#
 			var iconHTML = elementor.helpers.renderIcon( view, settings.exad_heading_icon, { 'aria-hidden': true }, 'i' , 'object' );
@@ -812,10 +823,10 @@ class Heading extends Widget_Base {
 				view.addRenderAttribute( 'exad_exclusive_heading_wrapper', 'class', 'exad-heading-icon-box-yes' );
 			}
 
-			view.addInlineEditingAttributes( 'exad_heading_title', 'none' );
+			view.addInlineEditingAttributes( 'exad_heading_title', 'basic' );
 
 			view.addRenderAttribute( 'exad_heading_subheading', 'class', 'exad-exclusive-heading-description' );
-            view.addInlineEditingAttributes( 'exad_heading_subheading' );
+            view.addInlineEditingAttributes( 'exad_heading_subheading', 'basic' );
 
             var target = settings.exad_heading_title_link.is_external ? ' target="_blank"' : '';
             var nofollow = settings.exad_heading_title_link.nofollow ? ' rel="nofollow"' : '';

@@ -33,7 +33,7 @@ class Button extends Widget_Base {
 		return [ 'exclusive-addons-elementor' ];
 	}
 
-	protected function _register_controls() {
+	protected function register_controls() {
 		$exad_primary_color = get_option( 'exad_primary_color_option', '#7a56ff' );
 
 		// Content Controls
@@ -51,7 +51,10 @@ class Button extends Widget_Base {
 				'type'        => Controls_Manager::TEXT,
 				'label_block' => true,
 				'default'     => __( 'Download!', 'exclusive-addons-elementor' ),
-				'placeholder' => __( 'Enter button text', 'exclusive-addons-elementor' )
+				'placeholder' => __( 'Enter button text', 'exclusive-addons-elementor' ),
+				'dynamic' => [
+					'active' => true,
+				]
 			]
 		);
 
@@ -507,30 +510,36 @@ class Button extends Widget_Base {
 				$this->add_render_attribute( 'exclusive_button_link_url', 'rel', 'nofollow' );
 			}
 		}
+		?>
 
-		echo '<div '.$this->get_render_attribute_string( 'exad_exclusive_button' ).'>';
-			do_action( 'exad_button_wrapper_before' );
+		<div <?php echo $this->get_render_attribute_string( 'exad_exclusive_button' ); ?>>
 
-			echo '<a '.$this->get_render_attribute_string( 'exclusive_button_link_url' ).'>';
-				do_action( 'exad_button_begin_anchor_tag' );
+			<?php do_action( 'exad_button_wrapper_before' ); ?>
+
+			<a <?php echo $this->get_render_attribute_string( 'exclusive_button_link_url' ); ?>>
+				<?php do_action( 'exad_button_begin_anchor_tag' );
 
 				if ( ! empty( $settings['exad_exclusive_button_icon']['value'] ) ) :
-					if( 'exad-button-incon-before-text' === $settings['exad_exclusive_button_icon_position'] ) :
-						echo '<span>';
-							Icons_Manager::render_icon( $settings['exad_exclusive_button_icon'], [ 'aria-hidden' => 'true' ] );
-						echo '</span>';
+					if( 'exad-button-incon-before-text' === $settings['exad_exclusive_button_icon_position'] ) : ?>
+						<span>
+							<?php Icons_Manager::render_icon( $settings['exad_exclusive_button_icon'], [ 'aria-hidden' => 'true' ] ); ?>
+						</span>
+					<?php	
 					endif;
 				endif;
+				?>
 
-				echo '<span '.$this->get_render_attribute_string( 'exclusive_button_text' ).'>';
-					echo esc_html( $settings['exclusive_button_text'] );
-				echo '</span>';
+				<span <?php echo $this->get_render_attribute_string( 'exclusive_button_text' ); ?>>
+					<?php echo esc_html( $settings['exclusive_button_text'] ); ?>
+				</span>
 
+				<?php
 				if ( ! empty( $settings['exad_exclusive_button_icon']['value'] ) ) :
-					if( 'exad-button-incon-after-text' === $settings['exad_exclusive_button_icon_position'] ) :
-						echo '<span>';
-							Icons_Manager::render_icon( $settings['exad_exclusive_button_icon'], [ 'aria-hidden' => 'true' ] );
-						echo '</span>';
+					if( 'exad-button-incon-after-text' === $settings['exad_exclusive_button_icon_position'] ) : ?>
+						<span>
+							<?php Icons_Manager::render_icon( $settings['exad_exclusive_button_icon'], [ 'aria-hidden' => 'true' ] ); ?>
+						</span>
+					<?php	
 					endif;
 				endif;
 
@@ -538,11 +547,12 @@ class Button extends Widget_Base {
 					echo '<span class="effect-8-position"></span>';
 				}
 
-				do_action( 'exad_button_end_anchor_tag' );	
-			echo '</a>';
+				do_action( 'exad_button_end_anchor_tag' ); ?>
+			</a>
 
-			do_action( 'exad_button_wrapper_after' );
-		echo '</div>';	
+			<?php do_action( 'exad_button_wrapper_after' ); ?>
+		</div>
+		<?php	
 	}
 
 	/**
@@ -553,7 +563,7 @@ class Button extends Widget_Base {
      * @since 1.0.0
      * @access protected
      */
-	protected function _content_template() {
+	protected function content_template() {
 		?>
 		<#
 
