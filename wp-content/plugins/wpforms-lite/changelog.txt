@@ -1,5 +1,32 @@
 == Changelog ==
 
+= 1.6.8.1 =
+- Changed: Allow using right click to open a form preview in new tab or window.
+- Fixed: Notifications disabled on the previous version were enabled after the 1.6.8 update.
+- Fixed: Block preview in new WordPress 5.8 Widgets Block Editor now aligned properly.
+- Fixed: Word wrapping issues in various places for non-English languages.
+
+= 1.6.8 =
+- Added: Form Builder visual modernization and improved user experience.
+- Added: Form Builder is now more optimized, loading and performing faster.
+- Added: More tooltips in various areas of the Form Builder to provide context for different options.
+- Added: A lot more Templates that you can use for one-click forms creation.
+- Added: Categorize Form Templates into different sections and improve search, allowing faster access and better user experience.
+- Added: New Preview button for all Templates, so you can check how your form will look like before applying the Template.
+- Changed: Dropped support for IE11 in the Form Builder (same as WordPress 5.8).
+- Changed: Introducing tabs instead of accordion for Field Options in the Form Builder: General, Advanced, Smart Logic.
+- Changed: Allow underscore symbol usage in Allowlist/Denylist in Email field.
+- Changed: Updated DOMPurify lib to 2.3.0.
+- Fixed: A lot of visual inconsistencies inside the Form Builder.
+- Fixed: TinyMCE editor in the default Confirmation has 2 tabs (Visual, Text), which previously had incorrect height.
+- Fixed: Firefox-specific issue that prevents fields from being drag-n-dropped inside the Preview area of the Form Builder.
+- Fixed: Form Builder performance issue with large number of choices added to option fields.
+- Fixed: Missing down arrow in Dropdown field in Twenty Twenty-One theme.
+- Fixed: Checkboxes and Multiple Choice input fields rendered incorrectly in Twenty Twenty-One theme.
+- Fixed: Breaking words when wrapping in Modern Dropdown field.
+- Fixed: Download all relevant translations when initiating an upgrade from Lite to Pro on the plugin Settings page.
+- Fixed: Preserve line breaks when pasting blocks of text into Paragraph field with word limit option enabled.
+
 = 1.6.7.3 =
 - Changed: Renamed a misspelled `wpforms_display_sumbit_spinner_src` filter to `wpforms_display_submit_spinner_src`, old name is now deprecated.
 - Fixed: Expired transients are not deleted automatically.

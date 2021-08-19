@@ -69,22 +69,53 @@ class WPForms_Lite {
 				esc_html_e( 'Add New Notification', 'wpforms-lite' );
 			echo '</button>';
 		echo '</div>';
-		?>
 
-		<?php
+		$dismissed = get_user_meta( get_current_user_id(), 'wpforms_dismissed', true );
+
+		if ( empty( $dismissed['edu-builder-notifications-description'] ) ) {
+			echo '<div class="wpforms-panel-content-section-description wpforms-dismiss-container wpforms-dismiss-out">';
+			echo '<button type="button" class="wpforms-dismiss-button" title="' . esc_attr__( 'Dismiss this message.', 'wpforms-lite' ) . '" data-section="builder-notifications-description"></button>';
+			echo '<p>';
+			printf(
+				wp_kses( /* translators: %s - Link to the WPForms.com doc article. */
+					__( 'Notifications are emails sent when a form is submitted. By default, these emails include entry details. For setup and customization options, including a video overview, please <a href="%s" target="_blank" rel="noopener noreferrer">see our tutorial</a>.', 'wpforms-lite' ),
+					[
+						'a' => [
+							'href'   => [],
+							'rel'    => [],
+							'target' => [],
+						],
+					]
+				),
+				'https://wpforms.com/docs/setup-form-notification-wpforms/'
+			);
+			echo '</p>';
+			echo '<p>';
+			printf(
+				wp_kses( /* translators: 1$s, %2$s - Links to the WPForms.com doc articles. */
+					__( 'After saving these settings, be sure to <a href="%1$s" target="_blank" rel="noopener noreferrer">test a form submission</a>. This lets you see how emails will look, and to ensure that<br>they <a href="%2$s" target="_blank" rel="noopener noreferrer">are delivered successfully</a>.', 'wpforms-lite' ),
+					[
+						'a'  => [
+							'href'   => [],
+							'rel'    => [],
+							'target' => [],
+						],
+						'br' => [],
+					]
+				),
+				'https://wpforms.com/docs/how-to-properly-test-your-wordpress-forms-before-launching-checklist/',
+				'https://wpforms.com/docs/troubleshooting-email-notifications/'
+			);
+			echo '</p>';
+			echo '</div>';
+		}
+
 		wpforms_panel_field(
-			'select',
+			'toggle',
 			'settings',
 			'notification_enable',
 			$settings->form_data,
-			esc_html__( 'Notifications', 'wpforms-lite' ),
-			array(
-				'default' => '1',
-				'options' => array(
-					'1' => esc_html__( 'On', 'wpforms-lite' ),
-					'0' => esc_html__( 'Off', 'wpforms-lite' ),
-				),
-			)
+			esc_html__( 'Enable Notifications', 'wpforms-lite' )
 		);
 		?>
 
@@ -103,17 +134,17 @@ class WPForms_Lite {
 					'email',
 					$settings->form_data,
 					esc_html__( 'Send To Email Address', 'wpforms-lite' ),
-					array(
+					[
 						'default'    => '{admin_email}',
 						'tooltip'    => esc_html__( 'Enter the email address to receive form entry notifications. For multiple notifications, separate email addresses with a comma.', 'wpforms-lite' ),
-						'smarttags'  => array(
+						'smarttags'  => [
 							'type'   => 'fields',
 							'fields' => 'email',
-						),
+						],
 						'parent'     => 'settings',
 						'subsection' => $id,
 						'class'      => 'email-recipient',
-					)
+					]
 				);
 				if ( $cc ) :
 					wpforms_panel_field(
@@ -122,14 +153,14 @@ class WPForms_Lite {
 						'carboncopy',
 						$settings->form_data,
 						esc_html__( 'CC', 'wpforms-lite' ),
-						array(
-							'smarttags'  => array(
+						[
+							'smarttags'  => [
 								'type'   => 'fields',
 								'fields' => 'email',
-							),
+							],
 							'parent'     => 'settings',
 							'subsection' => $id,
-						)
+						]
 					);
 				endif;
 				wpforms_panel_field(
@@ -137,16 +168,16 @@ class WPForms_Lite {
 					'notifications',
 					'subject',
 					$settings->form_data,
-					esc_html__( 'Email Subject', 'wpforms-lite' ),
-					array(
+					esc_html__( 'Email Subject Line', 'wpforms-lite' ),
+					[
 						/* translators: %s - form name. */
 						'default'    => sprintf( esc_html__( 'New Entry: %s', 'wpforms-lite' ), $settings->form->post_title ),
-						'smarttags'  => array(
+						'smarttags'  => [
 							'type' => 'all',
-						),
+						],
 						'parent'     => 'settings',
 						'subsection' => $id,
-					)
+					]
 				);
 				wpforms_panel_field(
 					'text',
@@ -154,17 +185,17 @@ class WPForms_Lite {
 					'sender_name',
 					$settings->form_data,
 					esc_html__( 'From Name', 'wpforms-lite' ),
-					array(
+					[
 						'default'    => sanitize_text_field( get_option( 'blogname' ) ),
-						'smarttags'  => array(
+						'smarttags'  => [
 							'type'   => 'fields',
 							'fields' => 'name,text',
-						),
+						],
 						'parent'     => 'settings',
 						'subsection' => $id,
 						'readonly'   => ! empty( $from_name_after ),
 						'after'      => ! empty( $from_name_after ) ? '<p class="note">' . $from_name_after . '</p>' : '',
-					)
+					]
 				);
 				wpforms_panel_field(
 					'text',
@@ -172,45 +203,45 @@ class WPForms_Lite {
 					'sender_address',
 					$settings->form_data,
 					esc_html__( 'From Email', 'wpforms-lite' ),
-					array(
+					[
 						'default'    => '{admin_email}',
-						'smarttags'  => array(
+						'smarttags'  => [
 							'type'   => 'fields',
 							'fields' => 'email',
-						),
+						],
 						'parent'     => 'settings',
 						'subsection' => $id,
 						'readonly'   => ! empty( $from_email_after ),
 						'after'      => ! empty( $from_email_after ) ? '<p class="note">' . $from_email_after . '</p>' : '',
-					)
+					]
 				);
 				wpforms_panel_field(
 					'text',
 					'notifications',
 					'replyto',
 					$settings->form_data,
-					esc_html__( 'Reply-To', 'wpforms-lite' ),
-					array(
-						'smarttags'  => array(
+					esc_html__( 'Reply-To Email Address', 'wpforms-lite' ),
+					[
+						'smarttags'  => [
 							'type'   => 'fields',
 							'fields' => 'email',
-						),
+						],
 						'parent'     => 'settings',
 						'subsection' => $id,
-					)
+					]
 				);
 				wpforms_panel_field(
 					'textarea',
 					'notifications',
 					'message',
 					$settings->form_data,
-					esc_html__( 'Message', 'wpforms-lite' ),
-					array(
+					esc_html__( 'Email Message', 'wpforms-lite' ),
+					[
 						'rows'       => 6,
 						'default'    => '{all_fields}',
-						'smarttags'  => array(
+						'smarttags'  => [
 							'type' => 'all',
-						),
+						],
 						'parent'     => 'settings',
 						'subsection' => $id,
 						'class'      => 'email-msg',
@@ -221,7 +252,7 @@ class WPForms_Lite {
 											'<code>{all_fields}</code>'
 										) .
 										'</p>',
-					)
+					]
 				);
 				?>
 			</div>
@@ -316,31 +347,33 @@ class WPForms_Lite {
 					'message',
 					$settings->form_data,
 					esc_html__( 'Confirmation Message', 'wpforms-lite' ),
-					array(
+					[
 						'default'     => esc_html__( 'Thanks for contacting us! We will be in touch with you shortly.', 'wpforms-lite' ),
-						'tinymce'     => array(
+						'tinymce'     => [
 							'editor_height' => '200',
-						),
+						],
 						'input_id'    => 'wpforms-panel-field-confirmations-message-' . $id,
 						'input_class' => 'wpforms-panel-field-confirmations-message',
 						'parent'      => 'settings',
 						'subsection'  => $id,
-					)
+						'class'       => 'wpforms-panel-field-tinymce',
+					]
 				);
 				wpforms_panel_field(
-					'checkbox',
+					'toggle',
 					'confirmations',
 					'message_scroll',
 					$settings->form_data,
 					esc_html__( 'Automatically scroll to the confirmation message', 'wpforms-lite' ),
-					array(
+					[
 						'input_class' => 'wpforms-panel-field-confirmations-message_scroll',
 						'parent'      => 'settings',
 						'subsection'  => $id,
-					)
+					]
 				);
-				$p     = array();
+				$p     = [];
 				$pages = get_pages();
+
 				foreach ( $pages as $page ) {
 					$depth          = count( $page->ancestors );
 					$p[ $page->ID ] = str_repeat( '-', $depth ) . ' ' . $page->post_title;

@@ -389,6 +389,7 @@ class WPForms_Form_Handler {
 
 		// Preserve form meta.
 		$meta = $this->get_meta( $form_id );
+
 		if ( $meta ) {
 			$data['meta'] = $meta;
 		}

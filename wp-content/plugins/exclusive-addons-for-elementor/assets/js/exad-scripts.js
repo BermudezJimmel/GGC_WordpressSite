@@ -234,6 +234,64 @@ var exadFacebookFeed = function($scope) {
     });
 };
 
+// filterable post script starts
+
+var exclusiveFilterablePost = function( $scope, $ ) {
+    $( window ).load( function() {
+
+        if ( $.isFunction( $.fn.isotope ) ) {
+            var exadGetGallery       = $scope.find( '.filterable-post-container' ).eq( 0 ),
+            currentFilteredId         = '#' + exadGetGallery.attr( 'id' ),
+            $container             = $scope.find( currentFilteredId ).eq( 0 );
+            
+            var filterableMainWrapper = $scope.find( '.exad-filterable-items' ).eq( 0 ),
+            filterableItem            = '#' + filterableMainWrapper.attr( 'id' );
+
+            $container.isotope({
+                filter: '*',
+                animationOptions: {
+                    queue: true
+                }
+            });
+
+            $( filterableItem + ' .exad-filterable-menu li' ).click( function() {
+                $( filterableItem + ' .exad-filterable-menu li.current' ).removeClass( 'current' );
+                $( this ).addClass( 'current' );
+         
+                var selector = $( this ).attr( 'data-filter' );
+                $container.isotope( {
+                    filter: selector,
+                    layoutMode: 'masonry',
+                    getSortData: {
+                        name: '.name',
+                        symbol: '.symbol',
+                        number: '.number parseInt',
+                        category: '[data-category]',
+                        weight: function( itemElem ) {
+                            var weight = $( itemElem ).find( '.weight' ).text();
+                            return parseFloat( weight.replace( /[\(\)]/g, '' ) );
+                        }
+                    },
+                    animationOptions: {
+                        queue: true
+                    },
+                    masonry: {
+                        columnWidth: 1
+                    }
+                 } );
+                 return false;
+            } ); 
+
+            $container.imagesLoaded().progress( function() {
+                $container.isotope('layout');
+            });
+        }
+    } ); 
+}
+
+// filterable post script ends
+
+
 // filterable gallery script starts
 
 var exclusiveFilterableGallery = function( $scope, $ ) {
@@ -343,6 +401,30 @@ var exclusiveGoogleMaps = function($scope, $) {
 
 // google maps script ends
 
+
+// Google Reviews Carousel
+var exclusiveGoogleReviews = function( $scope, $ ) {
+
+  var $slider = $scope.find( '.exad-google-reviews-carousel-wrapper' );
+      
+      if ( ! $slider.length ) {
+          return;
+      }
+
+  var $sliderContainer = $slider.find('.swiper-container'),
+    $settings 		 = $slider.data('settings');
+
+  var swiper = new Swiper($sliderContainer, $settings);
+
+  if ($settings.pauseOnHover) {
+     $($sliderContainer).hover(function() {
+      (this).swiper.autoplay.stop();
+    }, function() {
+      (this).swiper.autoplay.start();
+    });
+  }
+
+};
 // image comparison script starts
 
 var exclusiveImageComparison = function($scope, $) {
@@ -682,6 +764,7 @@ var exclusivePostGrid = function( $scope, $ ) {
                 category: $(this).data('category'),
                 tags: $(this).data('tags'),
                 offset: $(this).data('offset'),
+                exclude_post: $(this).data('exclude_post')
             },
             beforeSend : function ( xhr ) {
 				btn.text('Loading...');
@@ -896,6 +979,8 @@ $(window).on('elementor/frontend/init', function () {
     elementorFrontend.hooks.addAction( 'frontend/element_ready/exad-exclusive-tabs.default', exclusiveTabs );
     elementorFrontend.hooks.addAction( 'frontend/element_ready/exad-covid-19.default', exclusiveCorona );
     elementorFrontend.hooks.addAction( 'frontend/element_ready/exad-facebook-feed.default', exadFacebookFeed );
+    elementorFrontend.hooks.addAction( 'frontend/element_ready/exad-google-reviews.default', exclusiveGoogleReviews );
+    elementorFrontend.hooks.addAction( 'frontend/element_ready/exad-filterable-post.default', exclusiveFilterablePost);
     elementorFrontend.hooks.addAction( 'frontend/element_ready/section', exclusiveSticky);
 });	
 

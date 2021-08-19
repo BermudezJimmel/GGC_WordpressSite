@@ -255,6 +255,13 @@ class Addons_Manager {
                 'tags'   => 'free',
                 'is_pro' => false
             ],
+            'filterable-post'  => [
+                'title'  => __( 'Filterable Post', 'exclusive-addons-elementor' ),
+                'class'  => '\ExclusiveAddons\Elements\Filterable_Post',
+                'demo_link' => 'https://exclusiveaddons.com/filterable-post-demo/',
+                'tags'   => 'free',
+                'is_pro' => false
+            ],
             'flipbox'  => [
                 'title'  => __( 'Flip Box', 'exclusive-addons-elementor' ),
                 'class'  => '\ExclusiveAddons\Elements\Flipbox',
@@ -266,6 +273,13 @@ class Addons_Manager {
                 'title'  => __( 'Google Maps', 'exclusive-addons-elementor' ),
                 'class'  => '\ExclusiveAddons\Elements\Google_Maps',
                 'demo_link' => 'https://exclusiveaddons.com/google-map-demo/',
+                'tags'   => 'free',
+                'is_pro' => false
+            ],
+            'google-reviews'  => [
+                'title'  => __( 'Google Reviews', 'exclusive-addons-elementor' ),
+                'class'  => '\ExclusiveAddons\Elements\Google_Reviews',
+                'demo_link' => 'https://exclusiveaddons.com/google-reviews-demo/',
                 'tags'   => 'free',
                 'is_pro' => false
             ],
@@ -689,24 +703,17 @@ class Addons_Manager {
                 'tags'   => 'pro',
                 'is_pro' => true
             ],
+            'woo-my-account'  => [
+                'title'  => __( 'Woo My Account', 'exclusive-addons-elementor' ),
+                'class'  => '\ExclusiveAddons\Elements\WC_My_Account',
+                'demo_link' => 'https://exclusiveaddons.com/shop',
+                'tags'   => 'pro',
+                'is_pro' => true
+            ],
             'woo-add-to-cart'  => [
                 'title'  => __( 'Woo Mini Cart', 'exclusive-addons-elementor' ),
                 'class'  => '\ExclusiveAddons\Elements\Woo_Mini_Cart',
                 'demo_link' => 'https://exclusiveaddons.com/woo-add-to-cart',
-                'tags'   => 'pro',
-                'is_pro' => true
-            ],
-            'woo-category'  => [
-                'title'  => __( 'Woo Category', 'exclusive-addons-elementor' ),
-                'class'  => '\ExclusiveAddons\Elements\Woo_Category',
-                'demo_link' => 'https://exclusiveaddons.com/woo-category/',
-                'tags'   => 'pro',
-                'is_pro' => true
-            ], 
-            'woo-products'  => [
-                'title'  => __( 'Woo Products', 'exclusive-addons-elementor' ),
-                'class'  => '\ExclusiveAddons\Elements\Woo_Products',
-                'demo_link' => 'https://exclusiveaddons.com/woo-product/',
                 'tags'   => 'pro',
                 'is_pro' => true
             ],
@@ -717,11 +724,32 @@ class Addons_Manager {
                 'tags'   => 'pro',
                 'is_pro' => true
             ],
+            'woo-category'  => [
+                'title'  => __( 'Woo Category', 'exclusive-addons-elementor' ),
+                'class'  => '\ExclusiveAddons\Elements\Woo_Category',
+                'demo_link' => 'https://exclusiveaddons.com/woo-category/',
+                'tags'   => 'pro',
+                'is_pro' => true
+            ],
             'woo-checkout'  => [
                 'title'  => __( 'Woo Checkout', 'exclusive-addons-elementor' ),
                 'class'  => '\ExclusiveAddons\Elements\Woo_Checkout',
                 'demo_link' => 'https://exclusiveaddons.com/shop',
                 'tags'   => 'pro',
+                'is_pro' => true
+            ],
+            'woo-products'  => [
+                'title'  => __( 'Woo Products', 'exclusive-addons-elementor' ),
+                'class'  => '\ExclusiveAddons\Elements\Woo_Products',
+                'demo_link' => 'https://exclusiveaddons.com/woo-product/',
+                'tags'   => 'pro',
+                'is_pro' => true
+            ],
+            'woo-products-carousel'  => [
+                'title'  => __( 'Woo Product Carousel', 'exclusive-addons-elementor' ),
+                'class'  => '\ExclusiveAddons\Elements\Woo_Product_Carousel',
+                'demo_link' => 'https://exclusiveaddons.com/woo-products-carousel-demo',
+                'tags'   => 'coming soon',
                 'is_pro' => true
             ]
         ];

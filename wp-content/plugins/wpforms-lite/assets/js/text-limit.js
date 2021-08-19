@@ -115,7 +115,8 @@
 				limit
 			);
 
-			if ( ( e.keyCode === 32 || e.keyCode === 188 ) && words >= limit ) {
+			// We should prevent the keys: Enter, Space, Comma.
+			if ( [ 13, 32, 188 ].indexOf( e.keyCode ) > -1 && words >= limit ) {
 				e.preventDefault();
 			}
 		};
@@ -166,6 +167,42 @@
 	}
 
 	/**
+	 * Limit string length to a certain number of words, preserving line breaks.
+	 *
+	 * @since 1.6.8
+	 *
+	 * @param {string} text  Text.
+	 * @param {number} limit Max allowed number of words.
+	 *
+	 * @returns {string} Text with the limited number of words.
+	 */
+	function limitWords( text, limit ) {
+
+		var separators,
+			newTextArray,
+			result = '';
+
+		// Regular expression pattern: match any space character.
+		var regEx = /\s+/g;
+
+		// Store separators for further join.
+		separators = text.trim().match( regEx ) || [];
+
+		// Split the new text by regular expression.
+		newTextArray = text.split( regEx );
+
+		// Limit the number of words.
+		newTextArray.splice( limit, newTextArray.length );
+
+		// Join the words together using stored separators.
+		for ( var i = 0; i < newTextArray.length; i++ ) {
+			result += newTextArray[ i ] + ( separators[ i ] || '' );
+		}
+
+		return result.trim();
+	}
+
+	/**
 	 * Paste event higher order function for words limit.
 	 *
 	 * @since 1.5.6
@@ -184,10 +221,7 @@
 				newPosition = this.selectionStart + pastedText.length,
 				newText = this.value.substring( 0, this.selectionStart ) + pastedText + this.value.substring( this.selectionStart );
 
-			newText = newText.trim().split( /\s+/ );
-			newText.splice( limit, newText.length );
-
-			this.value = newText.join( ' ' );
+			this.value = limitWords( newText, limit );
 			this.setSelectionRange( newPosition, newPosition );
 		};
 	}
@@ -242,7 +276,9 @@
 				function( e ) {
 
 					var limit = parseInt( e.dataset.textLimit, 10 ) || 0;
-					e.value = e.value.trim().split( /\s+/ ).slice( 0, limit ).join( ' ' );
+
+					e.value = limitWords( e.value, limit );
+
 					var hint = createHint(
 						e.dataset.formId,
 						e.dataset.fieldId,

@@ -1896,12 +1896,275 @@ ul.exad-call-to-action-buttons {
 
 /* Facebook Feed Css Ends */
 
+/* Filterable Gallery Start */
+
+/* .exad-filterable-items {
+    text-align: center;
+  } */
+  
+  @media(max-width: 575px) {
+
+    .exad-filterable-items.exad-filterable-menu-container-align-left,
+    .exad-filterable-items.exad-filterable-menu-container-align-right {
+      display: block !important;
+    }
+
+    .exad-filterable-items.exad-filterable-menu-container-align-left .exad-filterable-controls,
+    .exad-filterable-items.exad-filterable-menu-container-align-right .exad-filterable-controls,
+    .exad-filterable-items.exad-filterable-menu-container-align-left .exad-filterable-menu-container,
+    .exad-filterable-items.exad-filterable-menu-container-align-right .exad-filterable-menu-container {
+      width: 100% !important;
+    }
+
+  }
+
+  .exad-filterable-items.exad-filterable-menu-container-align-left,
+  .exad-filterable-items.exad-filterable-menu-container-align-right {
+    display: flex;
+  }
+
+  .exad-filterable-items.exad-filterable-menu-container-align-left .exad-filterable-menu-container,
+  .exad-filterable-items.exad-filterable-menu-container-align-right .exad-filterable-menu-container {
+    width: 20%;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .exad-filterable-items.exad-filterable-menu-container-align-left .exad-filterable-menu-container {
+    order: 0;
+  }
+
+  .exad-filterable-items.exad-filterable-menu-container-align-right .exad-filterable-menu-container {
+    order: 1;
+  }
+
+  .exad-filterable-items.exad-filterable-menu-container-align-left .exad-filterable-controls,
+  .exad-filterable-items.exad-filterable-menu-container-align-right .exad-filterable-controls {
+    width: 80%;
+  }
+
+  .exad-filterable-items .exad-filterable-content-wrapper {
+    position: relative;
+    overflow: hidden;
+  }
+  .exad-filterable-items .exad-filterable-image .exad-filterable-thumbnail-holder {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100.1%;
+      height: 100.1%;
+      background-position: center;
+      background-size: cover;
+      z-index: 0;
+      -webkit-transition: all 0.2s ease;
+      -o-transition: all 0.2s ease;
+      transition: all 0.2s ease;
+      will-change: transform;
+      overflow: hidden;
+  }
+  .exad-filterable-items .exad-filterable-image {
+      position: relative;
+      background-color: #eeeeee;
+      padding-bottom: 80%;
+  }
+  
+  .exad-filterable-menu .filter-item {
+    background: none;
+    border: none;
+    cursor: pointer;
+    outline: none;
+    transition: all .3s ease;
+    text-transform: capitalize;
+    display: inline-block;
+  }
+  
+  .exad-filterable-items .filterable-post-container {
+    display: flex;
+    flex-wrap: wrap;
+  }
+  
+  .exad-filterable-items .filterable-post-container .exad-filterable-item {
+    position: relative;
+    overflow: hidden;
+  }
+  
+  @media (max-width: 991px) {
+    .exad-filterable-items .filterable-post-container .exad-filterable-item {
+      width: 50%;
+    }
+  }
+  
+  @media (max-width: 575px) {
+    .exad-filterable-items .filterable-post-container .exad-filterable-item {
+      width: 100%;
+    }
+  }
+  
+  .exad-filterable-items .filterable-post-container .exad-filterable-item img {
+    width: 100%;
+    display: block;
+  }
+  
+  .exad-filterable-items .filterable-post-container .exad-filterable-item .exad-filterable-item-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    background: rgba(114, 76, 255, 0.8);
+    transition: all .3s ease;
+  }
+  
+  .exad-filterable-items .filterable-post-container .exad-filterable-item .exad-filterable-item-overlay .exad-filterable-item-overlay-content {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+  }
+  .exad-filterable-items .filterable-post-container .exad-filterable-item .exad-filterable-item-overlay .exad-filterable-item-overlay-content .exad-fg-icons {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    width: 100%;
+  }
+  .exad-filterable-items .filterable-post-container .exad-filterable-item .exad-filterable-item-overlay .exad-filterable-item-overlay-content .exad-filterable-item-content {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    left: 0;
+  }
+  .exad-filterable-items .filterable-post-container .exad-filterable-item .exad-filterable-item-overlay .exad-filterable-item-overlay-content a {
+    height: 60px;
+    width: 60px;
+    margin-right: 10px;
+    position: relative;
+    cursor: pointer;
+    display: inline-block;
+    transition: all .3s ease;
+    border-radius: 100%;
+  }
+  
+  .exad-filterable-items .exad-filterable-item-content.below-image {
+    display: flex;
+    flex-direction: column;
+  }
+  .exad-filterable-items .exad-filterable-item-content h2 {
+    margin: 10px 0px 10px 0px;
+    font-size: 20px;
+  }
+  
+  .exad-filterable-items .exad-filterable-item-content p {
+    margin: 10px 0px 10px 0px;
+  }
+  
+  .exad-filterable-items .filterable-post-container .exad-filterable-item .exad-filterable-item-overlay .exad-filterable-item-overlay-content a i {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -webkit-transform: translate(-50%, -50%);
+            transform: translate(-50%, -50%);
+  }
+  
+  .exad-filterable-items .filterable-post-container .exad-filterable-item .exad-filterable-item-overlay.exad-zoom-in{
+    -webkit-transform: scale(0);
+            transform: scale(0);
+  }
+  .exad-filterable-items .filterable-post-container .exad-filterable-item:hover .exad-filterable-item-overlay.exad-zoom-in{
+    -webkit-transform: scale(1);
+            transform: scale(1);
+  }
+  .exad-filterable-items .filterable-post-container .exad-filterable-item .exad-filterable-item-overlay.exad-slide-left{
+    -webkit-transform: translateX(-100%);
+            transform: translateX(-100%);
+            opacity: 0;
+  }
+  .exad-filterable-items .filterable-post-container .exad-filterable-item:hover .exad-filterable-item-overlay.exad-slide-left{
+    -webkit-transform: translateX(0%);
+            transform: translateX(0%);
+            opacity: 1;
+  }
+  .exad-filterable-items .filterable-post-container .exad-filterable-item .exad-filterable-item-overlay.exad-slide-right{
+    -webkit-transform: translateX(100%);
+            transform: translateX(100%);
+            opacity: 0;
+  }
+  .exad-filterable-items .filterable-post-container .exad-filterable-item:hover .exad-filterable-item-overlay.exad-slide-right{
+    -webkit-transform: translateX(0%);
+            transform: translateX(0%);
+            opacity: 1;
+  }
+  .exad-filterable-items .filterable-post-container .exad-filterable-item .exad-filterable-item-overlay.exad-slide-top{
+    -webkit-transform: translateY(-100%);
+            transform: translateY(-100%);
+            opacity: 0;
+  }
+  .exad-filterable-items .filterable-post-container .exad-filterable-item:hover .exad-filterable-item-overlay.exad-slide-top{
+    -webkit-transform: translateY(0%);
+            transform: translateY(0%);
+            opacity: 1;
+  }
+  .exad-filterable-items .filterable-post-container .exad-filterable-item .exad-filterable-item-overlay.exad-slide-bottom{
+    -webkit-transform: translateY(100%);
+            transform: translateY(100%);
+            opacity: 0;
+  }
+  .exad-filterable-items .filterable-post-container .exad-filterable-item:hover .exad-filterable-item-overlay.exad-slide-bottom{
+    -webkit-transform: translateY(0%);
+            transform: translateY(0%);
+            opacity: 1;
+  }
+  
+  .filterable-post-container .exad-filterable-item.exad-col-1 {
+    width: 100%;
+  }
+  .filterable-post-container .exad-filterable-item.exad-col-2 {
+    width: 50%;
+  }
+  .filterable-post-container .exad-filterable-item.exad-col-3 {
+    width: 33.3333333333333%;
+  }
+  .filterable-post-container .exad-filterable-item.exad-col-4 {
+    width: 25%;
+  }
+  
+  @media only screen and (max-width: 991px) {
+    .filterable-post-container .exad-filterable-item.exad-col-1,
+    .filterable-post-container .exad-filterable-item.exad-col-2,
+    .filterable-post-container .exad-filterable-item.exad-col-3,
+    .filterable-post-container .exad-filterable-item.exad-col-4 {
+      width: 50%;
+    }
+  }
+  
+  @media only screen and (max-width: 767px) {
+    .filterable-post-container .exad-filterable-item.exad-col-1,
+    .filterable-post-container .exad-filterable-item.exad-col-2,
+    .filterable-post-container .exad-filterable-item.exad-col-3,
+    .filterable-post-container .exad-filterable-item.exad-col-4 {
+      width: 100%;
+    }
+  }
+  
+  /* Flterable filterable End */
+  
 /* Flip Box Start */
 
 .exad-flip-box {
   -webkit-perspective: 1000px;
   perspective: 1000px;
   background-color: transparent;
+}
+
+.exad-flip-box-front-overlay, .exad-flip-box-back-overlay{
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
 }
 
 .exad-flip-box-front-content, .exad-flip-box-back-content{
@@ -2168,6 +2431,18 @@ ul.exad-call-to-action-buttons {
           transform-style: preserve-3d;
 }
 
+.exad-flip-box .exad-flip-box-inner.fade .exad-flip-box-back{
+  opacity: 0;
+  transition: all 0.5s ease;
+}
+
+.exad-flip-box .exad-flip-box-inner.fade:hover .exad-flip-box-front {
+  opacity: 0;
+}
+.exad-flip-box .exad-flip-box-inner.fade:hover .exad-flip-box-back {
+  opacity: 1;
+}
+
 .exad-flip-box-front.left .exad-flip-box-front-image, .exad-flip-box-back.left .exad-flip-box-back-image {
   margin-right: auto;
 }
@@ -2189,6 +2464,12 @@ ul.exad-call-to-action-buttons {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+}
+.exad-flip-box .exad-flip-box-inner .exad-flip-box-front .exad-flip-box-front-image img,.exad-flip-box .exad-flip-box-inner .exad-flip-box-back .exad-flip-box-back-image img{
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  -o-object-fit: cover;
 }
 
 /* Flip Box End */
@@ -2443,6 +2724,465 @@ ul.exad-call-to-action-buttons {
 
 /* Flterable gallery End */
 
+/*Exad Google Reviews starts here*/
+
+.exad-google-reviews-carousel-wrapper .exad-google-reviews-carousel-quote {
+    font-size: 16px;
+}
+.exad-carousel-nav-next i,
+.exad-google-reviews-carousel-wrapper .exad-carousel-nav-prev i {
+    transition: 0.3s ease;
+    color: #b1b1b1;
+    line-height: 58px;
+}
+.exad-google-reviews-carousel-basic:before {
+    position: absolute;
+    content: '"';
+    font-family: Roboto, sans-serif;
+    color: #f3f3f4;
+    font-size: 400px;
+    right: 100px;
+    top: 50px;
+    line-height: 400px;
+    font-weight: 700;
+}
+.exad-google-reviews-carousel-circle {
+    margin: 0 -15px;
+}
+.exad-google-reviews-carousel-circle .exad-google-reviews-carousel-ratings {
+    padding-left: 0;
+    margin-bottom: 0;
+    list-style: none;
+    margin-bottom: 30px;
+}
+.exad-google-reviews-carousel-circle .exad-google-reviews-carousel-ratings li {
+    display: inline-block;
+    font-size: 20px;
+}
+.exad-google-reviews-carousel-circle .exad-google-reviews-carousel-ratings li.exad-google-reviews-carousel-ratings-active i {
+    color: #ff8e4a;
+}
+.exad-google-reviews-carousel-circle .exad-google-reviews-carousel-inner {
+    background: #fff;
+    outline: 0;
+    margin: 0 15px;
+    padding: 40px 30px;
+    text-align: center;
+}
+.exad-google-reviews-carousel-circle .exad-google-reviews-carousel-image {
+    position: relative;
+    z-index: 1;
+    width: 122px;
+    height: 122px;
+    margin: 0 auto;
+    margin-bottom: 45px;
+}
+.exad-google-reviews-carousel-circle .exad-google-reviews-carousel-image img {
+    position: absolute;
+    width: 100px;
+    height: 100px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 50%;
+}
+.exad-google-reviews-carousel-circle .exad-google-reviews-carousel-image svg {
+    position: absolute;
+    width: 123px;
+    height: 123px;
+    z-index: -1;
+}
+.exad-google-reviews-carousel-circle .exad-google-reviews-carousel-image svg:first-child {
+    left: 7px;
+    bottom: 7px;
+}
+.exad-google-reviews-carousel-circle .exad-google-reviews-carousel-image svg:nth-child(2) {
+    top: 7px;
+    left: 7px;
+}
+.exad-google-reviews-carousel-circle .exad-google-reviews-carousel-image svg:nth-child(3) {
+    right: 4px;
+    top: 0;
+}
+.exad-google-reviews-carousel-circle .exad-google-reviews-carousel-image svg.violate {
+    fill: #826eff;
+}
+.exad-google-reviews-carousel-circle .exad-google-reviews-carousel-image svg.orange {
+    fill: #ff6a47;
+}
+.exad-google-reviews-carousel-circle .exad-google-reviews-carousel-image svg.cyan {
+    fill: #3ad8f4;
+}
+.exad-google-reviews-carousel-circle .exad-google-reviews-carousel-name {
+    font-size: 18px;
+    font-family: Roboto, sans-serif;
+    margin-bottom: 5px;
+}
+.exad-google-reviews-carousel-circle .exad-google-reviews-carousel-designation {
+    font-size: 14px;
+}
+.exad-google-reviews-carousel-circle .exad-carousel-nav-next,
+.exad-google-reviews-carousel-circle .exad-carousel-nav-prev {
+    position: absolute;
+    z-index: 2;
+    width: 60px;
+    height: 60px;
+    background: #fff;
+    text-align: center;
+    border-radius: 50%;
+    border: 1px solid #e5e5e5;
+    opacity: 0.7;
+    transition: 0.3s ease;
+    cursor: pointer;
+    top: 50%;
+    transform: translateY(-50%);
+}
+.exad-google-reviews-carousel-circle .exad-carousel-nav-next:hover,
+.exad-google-reviews-carousel-circle .exad-carousel-nav-prev:hover {
+    box-shadow: 0 15px 39px 0 rgba(9, 24, 33, 0.06);
+    opacity: 1;
+}
+.exad-google-reviews-carousel-circle .exad-carousel-nav-prev {
+    left: -80px;
+}
+.exad-google-reviews-carousel-circle .exad-carousel-nav-next {
+    right: -80px;
+}
+.exad-google-reviews-carousel-single {
+    margin: 0;
+}
+.exad-google-reviews-carousel-single .exad-google-reviews-carousel-item {
+    margin: 0 56px 100px;
+}
+.exad-google-reviews-carousel-single .exad-google-reviews-carousel-inner {
+    display: flex;
+    align-items: center;
+}
+.exad-google-reviews-carousel-single .exad-google-reviews-carousel-inner .exad-google-reviews-carousel-inner-left {
+    flex-basis: 40%;
+}
+.exad-google-reviews-carousel-single .exad-google-reviews-carousel-inner .exad-google-reviews-carousel-inner-right {
+    flex-basis: 58%;
+    margin-left: 2%;
+}
+.exad-google-reviews-carousel-single .exad-google-reviews-carousel-name {
+    font-size: 22px;
+    font-family: Roboto, sans-serif;
+    margin-bottom: 5px;
+}
+.exad-google-reviews-carousel-single .exad-google-reviews-carousel-designation {
+    font-size: 16px;
+    display: inline-block;
+    margin-bottom: 25px;
+}
+.exad-google-reviews-carousel-single .exad-google-reviews-carousel-quote {
+    margin-bottom: 25px;
+}
+.exad-google-reviews-carousel-single .exad-google-reviews-carousel-ratings {
+    padding-left: 0;
+    margin-bottom: 0;
+    list-style: none;
+}
+.exad-google-reviews-carousel-single .exad-google-reviews-carousel-ratings li {
+    display: inline-block;
+    font-size: 20px;
+}
+.exad-google-reviews-carousel-single .exad-google-reviews-carousel-ratings li.exad-google-reviews-carousel-ratings-active i {
+    color: #806bff;
+}
+.exad-google-reviews-carousel-single .exad-google-reviews-carousel-image {
+    box-shadow: 0 40px 81px 0 rgba(9, 24, 33, 0.14);
+}
+.exad-google-reviews-carousel-single .exad-google-reviews-carousel-image img {
+    width: 100%;
+}
+.exad-google-reviews-carousel-single .exad-carousel-nav-next,
+.exad-google-reviews-carousel-single .exad-carousel-nav-prev {
+    position: absolute;
+    display: block;
+    width: 60px;
+    height: 60px;
+    cursor: pointer;
+    background: #fff;
+    text-align: center;
+    border-radius: 50%;
+    font-size: 25px;
+    transition: 0.3s ease;
+    margin-right: 20px;
+    border: 1px solid #e5e5e5;
+    bottom: 20px;
+    z-index: 1;
+}
+.exad-google-reviews-carousel-single .exad-carousel-nav-next:hover,
+.exad-google-reviews-carousel-single .exad-carousel-nav-prev:hover {
+    color: #fff;
+    box-shadow: 0 19px 27px 0 rgba(56, 218, 232, 0.25);
+    background: #806bff;
+}
+.exad-google-reviews-carousel-single .exad-carousel-nav-prev {
+    left: 56px;
+}
+.exad-google-reviews-carousel-single .exad-carousel-nav-next {
+    left: 126px;
+}
+@media only screen and (max-width: 630px) {
+    .exad-google-reviews-carousel-single .exad-google-reviews-carousel-inner {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+}
+@media only screen and (max-width: 400px) {
+    .exad-google-reviews-carousel-basic {
+        padding: 50px;
+    }
+    .exad-google-reviews-carousel-basic .exad-google-reviews-carousel-name {
+        font-size: 18px;
+    }
+    .exad-google-reviews-carousel-basic .exad-google-reviews-carousel-designation {
+        font-size: 14px;
+    }
+    .exad-google-reviews-carousel-basic .exad-carousel-nav-next,
+    .exad-google-reviews-carousel-basic .exad-carousel-nav-prev {
+        bottom: 0;
+    }
+    .exad-google-reviews-carousel-basic .exad-carousel-nav-next {
+        right: 25px;
+    }
+    .exad-google-reviews-carousel-basic .exad-carousel-nav-prev {
+        right: 90px;
+    }
+}
+
+.exad-google-reviews-ratings{
+    margin: 0;
+    padding: 0;
+  }
+  
+  .exad-google-reviews-ratings li{
+    list-style: none;
+    display: inline-block;
+  }
+  
+  .exad-google-reviews-thumb img {
+    height: 100% !important;
+    width: 100%;
+    display: block;
+    object-fit: cover;
+  }
+  .exad-google-reviews-thumb {
+    background: #ffffff;
+  }
+
+  .exad-google-reviews-wrapper {
+    border-radius: 10px 10px 10px 10px;
+    padding: 20px 20px 20px 20px;
+  }
+
+  
+  .exad-google-reviews-wrapper.exad-google-reviews-align-center{
+    text-align: center;
+  }
+  
+  .exad-google-reviews-wrapper.exad-google-reviews-align-center .exad-google-reviews-thumb{
+    margin-left: auto;
+    margin-right: auto;
+  }
+  
+  .exad-google-reviews-wrapper.exad-google-reviews-align-bottom{
+    text-align: center;
+  }
+  
+  .exad-google-reviews-wrapper.exad-google-reviews-align-bottom .exad-google-reviews-thumb{
+    margin-left: auto;
+    margin-right: auto;
+  }
+  
+  .exad-google-reviews-wrapper.exad-google-reviews-align-right{
+    text-align: right;
+  }
+  
+  .exad-google-reviews-wrapper.exad-google-reviews-align-center .exad-google-reviews-thumb{
+    margin-left: auto;
+  }
+
+  .exad-google-reviews-wrapper.exad-google-reviews-align-left .exad-google-reviews-reviewer-wrapper .exad-google-reviews-thumb,
+  .exad-google-reviews-wrapper.exad-google-reviews-align-right .exad-google-reviews-reviewer-wrapper .exad-google-reviews-thumb,
+  .exad-google-reviews-wrapper.exad-google-reviews-align-center .exad-google-reviews-reviewer-wrapper .exad-google-reviews-thumb,
+  .exad-google-reviews-wrapper.exad-google-reviews-align-bottom .exad-google-reviews-reviewer-wrapper .exad-google-reviews-thumb{
+    border-radius: 50% 50% 50% 50%;
+    margin-bottom: 0px;
+  }
+
+  .exad-google-reviews-wrapper.exad-google-reviews-align-left .exad-google-reviews-reviewer-wrapper,
+  .exad-google-reviews-wrapper.exad-google-reviews-align-right .exad-google-reviews-reviewer-wrapper{
+    display: flex;
+    align-items: center;
+  }
+  
+  .exad-google-reviews-wrapper.exad-google-reviews-align-left .exad-google-reviews-reviewer-wrapper .exad-google-reviews-reviewer{
+      padding-left: 20px;
+  }
+  
+  .exad-google-reviews-wrapper.exad-google-reviews-align-right .exad-google-reviews-reviewer-wrapper .exad-google-reviews-reviewer{
+    padding-right: 20px;
+  }
+
+  .exad-google-reviews-wrapper.exad-google-reviews-align-right .exad-google-reviews-reviewer-wrapper{
+    justify-content: flex-end;
+  }
+  
+  .exad-google-reviews-wrapper.exad-google-reviews-align-right .exad-google-reviews-reviewer-wrapper .exad-google-reviews-thumb{
+    order: 2;
+  }
+  .exad-google-reviews-wrapper.exad-google-reviews-align-right .exad-google-reviews-reviewer-wrapper .exad-google-reviews-reviewer{
+    order: 1;
+  }
+  
+  .exad-google-reviews-description{
+    margin: 0;
+  }
+  
+  .exad-google-reviews-name{
+    margin: 0;
+    font-size: 22px;
+    transition: all .3s ease;
+  }
+  
+  .exad-google-reviews-designation{
+    margin: 0;
+    display: block;
+    font-size: 14px;
+  }
+  
+  .exad-google-reviews-content-wrapper-arrow::before{
+    position: absolute;
+    content: "\e92a";
+    font-family: eicons;
+    transform: translateX(-50%);
+    font-size: 25px;
+    line-height: 1;
+  }
+  
+  .exad-google-reviews-wrapper-inner.layout-2 .exad-google-reviews-content-wrapper-arrow::before{
+    /* top: -15px; */
+    transform: translateX(-50%) rotate(180deg);
+  }
+  .exad-google-reviews-wrapper {
+    transition: all .3s ease;
+  }
+  
+  .exad-google-reviews-content-wrapper-arrow{
+    position: relative;
+    z-index: 1;
+  }
+  
+  .exad-google-reviews-wrapper.exad-google-reviews-align-center .exad-google-reviews-wrapper-inner.layout-1 .exad-google-reviews-content-wrapper-arrow::before{
+    left: 50%;
+    bottom: -15px;
+  }
+  
+  .exad-google-reviews-wrapper.exad-google-reviews-align-bottom .exad-google-reviews-wrapper-inner.layout-1 .exad-google-reviews-content-wrapper-arrow::before{
+    left: 50%;
+    bottom: -15px;
+  }
+  
+  .exad-google-reviews-wrapper.exad-google-reviews-align-left .exad-google-reviews-wrapper-inner.layout-1 .exad-google-reviews-content-wrapper-arrow::before{
+    left: 40px;
+    bottom: -15px;
+  }
+  
+  .exad-google-reviews-wrapper.exad-google-reviews-align-right .exad-google-reviews-wrapper-inner.layout-1 .exad-google-reviews-content-wrapper-arrow::before{
+    right: 25px;
+    bottom: -15px;
+  }
+  
+  .exad-google-reviews-wrapper.exad-google-reviews-align-center .exad-google-reviews-wrapper-inner.layout-2 .exad-google-reviews-content-wrapper-arrow::before{
+    left: 50%;
+    top: -15px;
+  }
+  
+  .exad-google-reviews-wrapper.exad-google-reviews-align-bottom .exad-google-reviews-wrapper-inner.layout-2 .exad-google-reviews-content-wrapper-arrow::before{
+    left: 50%;
+    top: -15px;
+  }
+  
+  .exad-google-reviews-wrapper.exad-google-reviews-align-left .exad-google-reviews-wrapper-inner.layout-2 .exad-google-reviews-content-wrapper-arrow::before{
+    left: 40px;
+    top: -15px;
+  }
+  
+  .exad-google-reviews-wrapper.exad-google-reviews-align-right .exad-google-reviews-wrapper-inner.layout-2 .exad-google-reviews-content-wrapper-arrow::before{
+    right: 25px;
+    top: -15px;
+  }
+  
+  .exad-google-reviews-wrapper.exad-google-reviews-image-aside{
+    display: flex;
+    align-items: center;
+  }
+  
+  .exad-google-reviews-wrapper.exad-google-reviews-transition-top-yes:hover{
+    transform: translateY(-10px);
+  }
+  .exad-google-reviews-wrapper.exad-google-reviews-transition-top-yes{
+    transform: translateY(0px);
+    -webkit-transition: all .3s ease;
+    transition: all .3s ease;
+  }
+ 
+  .exad-google-reviews-carousel-wrapper.exad-google-reviews-carousel-dots-center .exad-swiper-pagination{
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    position: absolute;
+    width: 100%;
+  }
+
+  .exad-google-reviews-carousel-wrapper.exad-google-reviews-carousel-dots-right .exad-swiper-pagination{
+    margin-left: auto;
+    text-align: right;
+    position: absolute;
+    width: 100%;
+   }
+
+  .exad-google-reviews-carousel-wrapper.exad-google-reviews-carousel-dots-left .exad-swiper-pagination {
+    margin-right: auto;
+    text-align: left;
+    position: absolute;
+    width: 100%;
+  }
+
+  .exad-google-reviews-wrapper .exad-google-reviews-reviewer-wrapper .exad-google-reviews-reviewer .exad-author-name {
+    line-height: 24px;
+  }
+
+  .exad-google-reviews-wrapper .exad-google-reviews-reviewer-wrapper .exad-google-reviews-reviewer .exad-author-name a{
+    margin: 0;
+    font-size: 20px;
+    line-height: 20px;
+    transition: all .3s ease;
+  }
+
+  .exad-google-reviews-wrapper .exad-google-reviews-reviewer-wrapper .exad-google-reviews-reviewer .exad-google-reviews-date {
+    margin: 0;
+    display: block;
+    font-size: 14px;
+  }
+
+  .exad-google-review-transition-top-yes {
+    transform: translateY(0);
+    transition: all .3s ease;
+  }
+
+  .exad-google-reviews-carousel-wrapper .exad-google-review-transition-top-yes:hover {
+    transform: translateY(-10px);
+  }
+
+  .exad-google-reviews-carousel-wrapper .exad-dots-container .exad-swiper-pagination .swiper-pagination-bullet {
+    transition: all 0.3s;
+  }
+
+/*Exad Google Reviews End here*/
 
 /* Image Comparison style start */
 
@@ -4683,16 +5423,13 @@ text-align: right;
 }
 
 .exad-progress-bar .ldBar-label:after {
-  content:"%";display:inline; 
+  content:"%";
+  display:inline; 
   position: absolute;
 }
 
 .ldBar.no-percent .ldBar-label:after {
   content:""
-}
-
-[class*="exad-progress-bar-"] .ldBar-label {
-  
 }
 
 [class*="exad-progress-bar-"].line {

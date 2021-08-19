@@ -1858,6 +1858,7 @@ class Post_Grid extends Widget_Base {
 				'data-category' => $settings['exad_post_grid_categories'],
 				'data-tags' => $settings['exad_post_grid_tags'],
 				'data-offset' => $settings['exad_post_grid_offset'],
+				'data-exclude_post' => $settings['exad_post_grid_exclude_post']
 			]
 		);
 		?>		

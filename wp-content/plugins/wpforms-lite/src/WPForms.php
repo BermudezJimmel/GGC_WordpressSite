@@ -2,6 +2,8 @@
 
 namespace WPForms {
 
+	use stdClass;
+
 	/**
 	 * Main WPForms class.
 	 *
@@ -29,69 +31,6 @@ namespace WPForms {
 		public $version = '';
 
 		/**
-		 * The form data handler instance.
-		 *
-		 * @since 1.0.0
-		 *
-		 * @var \WPForms_Form_Handler
-		 */
-		public $form;
-
-		/**
-		 * The entry data handler instance (Pro).
-		 *
-		 * @since 1.0.0
-		 *
-		 * @var \WPForms_Entry_Handler
-		 */
-		public $entry;
-
-		/**
-		 * The entry fields data handler instance (Pro).
-		 *
-		 * @since 1.4.3
-		 *
-		 * @var \WPForms_Entry_Fields_Handler
-		 */
-		public $entry_fields;
-
-		/**
-		 * The entry meta data handler instance (Pro).
-		 *
-		 * @since 1.1.6
-		 *
-		 * @var \WPForms_Entry_Meta_Handler
-		 */
-		public $entry_meta;
-
-		/**
-		 * The front-end instance.
-		 *
-		 * @since 1.0.0
-		 *
-		 * @var \WPForms_Frontend
-		 */
-		public $frontend;
-
-		/**
-		 * The process instance.
-		 *
-		 * @since 1.0.0
-		 *
-		 * @var \WPForms_Process
-		 */
-		public $process;
-
-		/**
-		 * The License class instance (Pro).
-		 *
-		 * @since 1.0.0
-		 *
-		 * @var \WPForms_License
-		 */
-		public $license;
-
-		/**
 		 * Classes registry.
 		 *
 		 * @since 1.5.7
@@ -99,6 +38,24 @@ namespace WPForms {
 		 * @var array
 		 */
 		private $registry = [];
+
+		/**
+		 * List of legacy public properties.
+		 *
+		 * @since 1.6.8
+		 *
+		 * @var string[]
+		 */
+		private $legacy_properties = [
+			'form',
+			'entry',
+			'entry_fields',
+			'entry_meta',
+			'frontend',
+			'process',
+			'smart_tags',
+			'license',
+		];
 
 		/**
 		 * Paid returns true, free (Lite) returns false.
@@ -232,7 +189,6 @@ namespace WPForms {
 			require_once WPFORMS_PLUGIN_DIR . 'includes/class-providers.php';
 			require_once WPFORMS_PLUGIN_DIR . 'includes/class-process.php';
 			require_once WPFORMS_PLUGIN_DIR . 'includes/class-widget.php';
-			require_once WPFORMS_PLUGIN_DIR . 'includes/class-conditional-logic-core.php';
 			require_once WPFORMS_PLUGIN_DIR . 'includes/emails/class-emails.php';
 			require_once WPFORMS_PLUGIN_DIR . 'includes/integrations.php';
 			require_once WPFORMS_PLUGIN_DIR . 'includes/deprecated.php';
@@ -397,7 +353,7 @@ namespace WPForms {
 		 *
 		 * @param string $name Class name or an alias.
 		 *
-		 * @return mixed|\stdClass
+		 * @return mixed|stdClass|null
 		 */
 		public function get( $name ) {
 
@@ -405,7 +361,13 @@ namespace WPForms {
 				return $this->registry[ $name ];
 			}
 
-			return new \stdClass();
+			// Backward compatibility for old public properties.
+			// Return null to save old condition for these properties.
+			if ( in_array( $name, $this->legacy_properties, true ) ) {
+				return isset( $this->{$name} ) ? $this->{$name} : null;
+			}
+
+			return new stdClass();
 		}
 
 		/**
